@@ -39,6 +39,6 @@
         app:layout_constraintTop_toBottomOf="@+id/viewPager"
         app:layout_constraintVertical_bias="0.043" />
 
-    <!--<ImageView--><!--android:id="@+id/ic_logo"--><!--android:layout_width="239dp"--><!--android:layout_height="216dp"--><!--android:layout_gravity="center_horizontal"--><!--android:layout_marginStart="8dp"--><!--android:layout_marginTop="52dp"--><!--android:layout_marginEnd="8dp"--><!--app:layout_constraintEnd_toEndOf="parent"--><!--app:layout_constraintStart_toStartOf="parent"--><!--app:layout_constraintTop_toTopOf="parent"--><!--app:srcCompat="@drawable/TEST_slide_image2" />-->
+    <!--<ImageView--><!--android:id="@+id/ic_logo"--><!--android:layout_width="239dp"--><!--android:layout_height="216dp"--><!--android:layout_gravity="center_horizontal"--><!--android:layout_marginStart="8dp"--><!--android:layout_marginTop="52dp"--><!--android:layout_marginEnd="8dp"--><!--app:layout_constraintEnd_toEndOf="parent"--><!--app:layout_constraintStart_toStartOf="parent"--><!--app:layout_constraintTop_toTopOf="parent"--><!--app:srcCompat="@drawable/test_slide_image2" />-->
 
 </android.support.constraint.ConstraintLayout>

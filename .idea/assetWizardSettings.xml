@@ -34,11 +34,11 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="height" value="273" />
-                            <entry key="outputName" value="ic_editprofile_bottom_panel" />
+                            <entry key="height" value="200" />
+                            <entry key="outputName" value="ic_new_top_panel" />
                             <entry key="overrideSize" value="true" />
-                            <entry key="sourceFile" value="C:\Users\Yun\Desktop\М5\down_panel.svg" />
-                            <entry key="width" value="1114" />
+                            <entry key="sourceFile" value="C:\Users\Yun\Desktop\new_top_panel.svg" />
+                            <entry key="width" value="200" />
                           </map>
                         </option>
                       </PersistentState>

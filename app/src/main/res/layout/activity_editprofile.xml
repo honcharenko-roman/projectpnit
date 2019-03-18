@@ -19,7 +19,7 @@
             android:layout_height="169dp"
             android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/ic_createprofile_man_avatar"
+            app:srcCompat="@drawable/ic_createaccount_man_avatar"
             tools:layout_editor_absoluteY="49dp" />
 
         <ImageView
