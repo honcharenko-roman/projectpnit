@@ -5,6 +5,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sing_in">Sing in</string>
     <string name="create_account">Create account</string>
+    <string name="forgot_password">Forgot Password</string>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
 </resources>
