@@ -80,8 +80,8 @@ public class RestAPITestActivity extends AppCompatActivity {
                             List<Medic> medics = response.body();
                             textView.append(medics.get(0).getLastName());
                             //Favourites favourite = new Favourites(medics.get(0));
-                            favouritesDatabase.daoAccess().insertFavourite(medics.get(0));
-                            textView.append(favouritesDatabase.daoAccess().getAll().getValue().get(0).getLastName());
+                            //favouritesDatabase.daoAccess().insertFavourite(medics.get(0));
+                            //textView.append(favouritesDatabase.daoAccess().getAll().getValue().get(0).getLastName());
                         }
 
                         @Override
