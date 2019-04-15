@@ -1,24 +1,46 @@
 package com.example.yun.myapplication.Entities;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.PrimaryKey;
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Medic {
 
+    @PrimaryKey
+    @SerializedName("id")
+    @Expose
     private long id;
-
+    @SerializedName("address")
+    @Expose
     private String address;
-
+    @SerializedName("category")
+    @Expose
     private String category;
-
+    @SerializedName("yearsOfExperience")
+    @Expose
     private double yearsOfExperience;
-
+    @SerializedName("firstName")
+    @Expose
     private String firstName;
-
+    @SerializedName("lastName")
+    @Expose
     private String lastName;
 
+    @Ignore
+    @SerializedName("comments")
+    @Expose
     private List<Comment> comments = new ArrayList<>();
 
+    @Ignore
+    @SerializedName("account")
+    @Expose
     private Account account;
 
     public Medic(String address, String category, double yearsOfExperience, String firstName, String lastName) {
@@ -30,6 +52,10 @@ public class Medic {
     }
 
     public Medic() {
+    }
+
+    public Medic(String address) {
+        this.address = address;
     }
 
     public long getId() {

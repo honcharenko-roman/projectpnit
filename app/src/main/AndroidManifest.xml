@@ -13,14 +13,12 @@
         android:allowBackup="true"
         android:fullBackupContent="@xml/backup_descriptor">
         <activity android:name=".Activities.SplashActivity" android:theme="@style/SplashTheme">
+        <activity android:name=".Activities.RestAPITestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
 
             </intent-filter>
-
-        </activity>
-        <activity android:name=".Activities.Activity">
         </activity>
         <activity android:name=".Activities.MainActivity">
         </activity>

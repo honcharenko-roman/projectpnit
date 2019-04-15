@@ -14,19 +14,19 @@ import java.util.Objects;
 
 public class SingInActivity extends AppCompatActivity {
 
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Objects.requireNonNull(getSupportActionBar()).hide();
         setContentView(R.layout.activity_signin);
 
         Typeface font = Typeface.createFromAsset(getAssets(), "Montserrat-Black.ttf");
-        ((TextView)findViewById(R.id.signInText)).setTypeface(font);
+        ((TextView) findViewById(R.id.signInText)).setTypeface(font);
 
         font = Typeface.createFromAsset(getAssets(), "Montserrat-Italic.ttf");
-        ((TextView)findViewById(R.id.forgotPasswordText)).setTypeface(font);
-        ((TextView)findViewById(R.id.createAccountText)).setTypeface(font);
-        ((EditText)findViewById(R.id.passEditText)).setTypeface(font);
-        ((EditText)findViewById(R.id.emailEditText)).setTypeface(font);
+        ((TextView) findViewById(R.id.forgotPasswordText)).setTypeface(font);
+        ((TextView) findViewById(R.id.createAccountText)).setTypeface(font);
+        ((EditText) findViewById(R.id.passEditText)).setTypeface(font);
+        ((EditText) findViewById(R.id.emailEditText)).setTypeface(font);
 
         //Displaying TextInputLayout Error
         /*TextInputLayout emailLayout = (TextInputLayout) findViewById(R.id

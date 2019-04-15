@@ -3,22 +3,14 @@ package com.example.yun.myapplication.Entities;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Account {
 
-
     private long account_id;
-
     private String firstName;
-
     private String lastName;
-
     private String email;
-
     private String password;
-
     private List<Medic> favourites = new ArrayList<>();
-
     private Medic medic;
 
     public String getFirstName() {
