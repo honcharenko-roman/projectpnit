@@ -1,11 +1,19 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Pocket Medic</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="sing_in">Sing in</string>
     <string name="create_account">Create account</string>
     <string name="forgot_password">Forgot Password</string>
+
+    <string name="id_label">The ID is</string>
+    <string name="id_value"></string>
+    <string name="content_label">The Content is</string>
+    <string name="content_value"></string>
+    <string name="action_refresh">Refresh</string>
+
+
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
 </resources>

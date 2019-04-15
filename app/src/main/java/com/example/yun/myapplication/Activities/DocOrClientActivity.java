@@ -1,7 +1,9 @@
-package com.example.yun.myapplication;
+package com.example.yun.myapplication.Activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import com.example.yun.myapplication.R;
 
 import java.util.Objects;
 
