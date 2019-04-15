@@ -12,6 +12,12 @@ import com.example.yun.myapplication.ViewPagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
+    /**
+     * ViewPager testing
+     *
+     *
+     */
+
     ViewPager viewPager;
     LinearLayout sliderDotsPanel;
     private int dotsCount;

@@ -17,16 +17,29 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-
             </intent-filter>
         </activity>
         <activity android:name=".Activities.MainActivity">
         </activity>
         <activity android:name=".Activities.SingInActivity">
         </activity>
-        <activity android:name=".Activities.EditAccountActivity">
+        <activity android:name=".Activities.CreateAccountActivity">
         </activity>
-        <activity android:name=".Activities.DocOrClientActivity">
+        <activity android:name=".Activities.DoctorClientActivity">
+        </activity>
+        <activity android:name=".Activities.EditProfileActivity">
+        </activity>
+        <activity android:name=".Activities.FavouritesActivity">
+        </activity>
+        <activity android:name=".Activities.ListActivity">
+        </activity>
+        <activity android:name=".Activities.MapActivity">
+        </activity>
+        <activity android:name=".Activities.MedProfileActivity">
+        </activity>
+        <activity android:name=".Activities.PatientProfileActivity">
+        </activity>
+        <activity android:name=".Activities.StartActivity">
         </activity>
     </application>
 </manifest>
