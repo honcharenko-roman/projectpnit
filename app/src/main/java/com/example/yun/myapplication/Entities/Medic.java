@@ -1,13 +1,19 @@
 package com.example.yun.myapplication.Entities;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.PrimaryKey;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Medic {
 
+    @PrimaryKey
     @SerializedName("id")
     @Expose
     private long id;
@@ -27,10 +33,12 @@ public class Medic {
     @Expose
     private String lastName;
 
+    @Ignore
     @SerializedName("comments")
     @Expose
     private List<Comment> comments = new ArrayList<>();
 
+    @Ignore
     @SerializedName("account")
     @Expose
     private Account account;

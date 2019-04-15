@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme"
         android:allowBackup="true"
         android:fullBackupContent="@xml/backup_descriptor">
-        <activity android:name=".Activities.Activity">
+        <activity android:name=".Activities.RestAPITestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

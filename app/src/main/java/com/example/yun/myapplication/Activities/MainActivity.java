@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.yun.myapplication.R;
+import com.example.yun.myapplication.ViewPagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.example.yun.myapplication;
+package com.example.yun.myapplication.Retrofit;
 
 import com.example.yun.myapplication.Entities.Medic;
 

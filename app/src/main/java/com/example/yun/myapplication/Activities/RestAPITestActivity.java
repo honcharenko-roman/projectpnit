@@ -1,5 +1,8 @@
 package com.example.yun.myapplication.Activities;
 
+import android.arch.persistence.room.Database;
+import android.arch.persistence.room.Room;
+import android.arch.persistence.room.RoomDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -14,22 +17,32 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.yun.myapplication.DaoAccess;
+import com.example.yun.myapplication.Entities.Favourites;
 import com.example.yun.myapplication.Entities.Medic;
-import com.example.yun.myapplication.NetworkService;
-import com.example.yun.myapplication.Post;
+import com.example.yun.myapplication.Retrofit.NetworkService;
 import com.example.yun.myapplication.R;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
-import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Activity extends AppCompatActivity {
+public class RestAPITestActivity extends AppCompatActivity {
+
+
+
+    private static final String DATABASE_NAME = "favourites_db";
+    private FavouritesDatabase favouritesDatabase;
+
+    @Database(entities = {Medic.class}, version = 1, exportSchema = false)
+    public static abstract class FavouritesDatabase extends RoomDatabase {
+        public abstract DaoAccess daoAccess() ;
+    }
 
     Button button;
 
@@ -37,6 +50,10 @@ public class Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_main);
+
+        favouritesDatabase = Room.databaseBuilder(getApplicationContext(),
+                FavouritesDatabase.class, DATABASE_NAME)
+                .build();
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -53,8 +70,11 @@ public class Activity extends AppCompatActivity {
                     .enqueue(new Callback<List<Medic>>() {
                         @Override
                         public void onResponse(@NonNull Call<List<Medic>> call, @NonNull Response<List<Medic>> response) {
-                            List<Medic> medic = response.body();
-                            textView.append(medic.get(0).getLastName());
+                            List<Medic> medics = response.body();
+                            textView.append(medics.get(0).getLastName());
+                            //Favourites favourite = new Favourites(medics.get(0));
+                            favouritesDatabase.daoAccess().insertFavourite(medics.get(0));
+                            textView.append(favouritesDatabase.daoAccess().getAll().getValue().get(0).getLastName());
                         }
 
                         @Override
@@ -70,7 +90,6 @@ public class Activity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         new HttpRequestTask().execute();
-
     }
 
     @Override
