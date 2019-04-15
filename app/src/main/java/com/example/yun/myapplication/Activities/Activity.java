@@ -10,16 +10,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.yun.myapplication.Entities.Greeting;
 import com.example.yun.myapplication.Entities.Medic;
 import com.example.yun.myapplication.R;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
+
 public class Activity extends AppCompatActivity {
+
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,12 @@ public class Activity extends AppCompatActivity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
+
+        button = findViewById(R.id.button);
+        button.setOnClickListener(v -> {
+            TextView greetingContentText = findViewById(R.id.content_value);
+            greetingContentText.setText("тест");
+        });
     }
 
     @Override
@@ -76,15 +86,16 @@ public class Activity extends AppCompatActivity {
     }
 
 
-    private class HttpRequestTask extends AsyncTask<Void, Void, Medic> {
+
+    private class HttpRequestTask extends AsyncTask<Void, Void, List<Medic>> {
         @Override
-        protected Medic doInBackground(Void... params) {
+        protected List<Medic> doInBackground(Void... params) {
             try {
-                final String url = "https://pocket-medic.herokuapp.com/medic?id=1";
+                final String url = "https://pocket-medic.herokuapp.com/medics";
                 RestTemplate restTemplate = new RestTemplate();
                 restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-                Medic medic = restTemplate.getForObject(url, Medic.class);
-                return medic;
+                List<Medic> medics = restTemplate.get//restTemplate.getForObject(url, Medic.class);
+                return medics;
             } catch (Exception e) {
                 Log.e("MainActivity", e.getMessage(), e);
             }
@@ -95,10 +106,9 @@ public class Activity extends AppCompatActivity {
         protected void onPostExecute(Medic medic) {
             TextView greetingIdText = findViewById(R.id.id_value);
             TextView greetingContentText = findViewById(R.id.content_value);
-            greetingIdText.setText(medic.getCategory());
-            greetingContentText.setText(medic.getFirstName());
+            greetingIdText.setText(medic.getAddress());
+            greetingContentText.setText(String.valueOf(medic.getId()));
         }
-
     }
 
 }

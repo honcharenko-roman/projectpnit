@@ -6,19 +6,12 @@ import java.util.List;
 public class Medic {
 
     private long id;
-
     private String address;
-
     private String category;
-
     private double yearsOfExperience;
-
     private String firstName;
-
     private String lastName;
-
     private List<Comment> comments = new ArrayList<>();
-
     private Account account;
 
     public Medic(String address, String category, double yearsOfExperience, String firstName, String lastName) {
@@ -30,6 +23,10 @@ public class Medic {
     }
 
     public Medic() {
+    }
+
+    public Medic(String address) {
+        this.address = address;
     }
 
     public long getId() {

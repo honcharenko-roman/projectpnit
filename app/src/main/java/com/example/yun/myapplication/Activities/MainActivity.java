@@ -50,21 +50,15 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-
                 for (int i = 0; i < dotsCount; i++) {
                     dots[i].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.test_non_active_dot));
                 }
-
                 dots[position].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.test_active_dot));
-
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
-
             }
         });
-
     }
-
 }
