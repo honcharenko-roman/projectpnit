@@ -2,6 +2,7 @@ package com.example.yun.myapplication.Activities;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -14,12 +15,19 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.yun.myapplication.Entities.Medic;
+import com.example.yun.myapplication.NetworkService;
+import com.example.yun.myapplication.Post;
 import com.example.yun.myapplication.R;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.Objects;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Activity extends AppCompatActivity {
 
@@ -37,9 +45,24 @@ public class Activity extends AppCompatActivity {
         }
 
         button = findViewById(R.id.button);
+        TextView textView = findViewById(R.id.textView);
         button.setOnClickListener(v -> {
-            TextView greetingContentText = findViewById(R.id.content_value);
-            greetingContentText.setText("тест");
+            NetworkService.getInstance()
+                    .getJSONApi()
+                    .getAllPosts()
+                    .enqueue(new Callback<List<Medic>>() {
+                        @Override
+                        public void onResponse(@NonNull Call<List<Medic>> call, @NonNull Response<List<Medic>> response) {
+                            List<Medic> medic = response.body();
+                            textView.append(medic.get(0).getLastName());
+                        }
+
+                        @Override
+                        public void onFailure(@NonNull Call<List<Medic>> call, @NonNull Throwable t) {
+                            textView.append("Error occurred while getting request!");
+                            t.printStackTrace();
+                        }
+                    });
         });
     }
 
@@ -47,6 +70,7 @@ public class Activity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         new HttpRequestTask().execute();
+
     }
 
     @Override
@@ -86,16 +110,15 @@ public class Activity extends AppCompatActivity {
     }
 
 
-
-    private class HttpRequestTask extends AsyncTask<Void, Void, List<Medic>> {
+    private class HttpRequestTask extends AsyncTask<Void, Void, Medic> {
         @Override
-        protected List<Medic> doInBackground(Void... params) {
+        protected Medic doInBackground(Void... params) {
             try {
-                final String url = "https://pocket-medic.herokuapp.com/medics";
+                final String url = "https://pocket-medic.herokuapp.com/medic?id=1";
                 RestTemplate restTemplate = new RestTemplate();
                 restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-                List<Medic> medics = restTemplate.get//restTemplate.getForObject(url, Medic.class);
-                return medics;
+                Medic medic = restTemplate.getForObject(url, Medic.class);
+                return medic;
             } catch (Exception e) {
                 Log.e("MainActivity", e.getMessage(), e);
             }

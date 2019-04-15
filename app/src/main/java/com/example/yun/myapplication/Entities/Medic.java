@@ -1,17 +1,38 @@
 package com.example.yun.myapplication.Entities;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Medic {
 
+    @SerializedName("id")
+    @Expose
     private long id;
+    @SerializedName("address")
+    @Expose
     private String address;
+    @SerializedName("category")
+    @Expose
     private String category;
+    @SerializedName("yearsOfExperience")
+    @Expose
     private double yearsOfExperience;
+    @SerializedName("firstName")
+    @Expose
     private String firstName;
+    @SerializedName("lastName")
+    @Expose
     private String lastName;
+
+    @SerializedName("comments")
+    @Expose
     private List<Comment> comments = new ArrayList<>();
+
+    @SerializedName("account")
+    @Expose
     private Account account;
 
     public Medic(String address, String category, double yearsOfExperience, String firstName, String lastName) {
