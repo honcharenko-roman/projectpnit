@@ -11,6 +11,12 @@ import com.example.yun.myapplication.R;
 
 public class MainActivity extends AppCompatActivity {
 
+    /**
+     * ViewPager testing
+     *
+     *
+     */
+
     ViewPager viewPager;
     LinearLayout sliderDotsPanel;
     private int dotsCount;

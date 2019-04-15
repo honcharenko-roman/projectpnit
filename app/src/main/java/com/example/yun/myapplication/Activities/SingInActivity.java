@@ -2,9 +2,7 @@ package com.example.yun.myapplication.Activities;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -14,6 +12,12 @@ import java.util.Objects;
 
 public class SingInActivity extends AppCompatActivity {
 
+
+    /**
+     * Sign In Activity
+     *
+     * @param savedInstanceState
+     */
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         Objects.requireNonNull(getSupportActionBar()).hide();

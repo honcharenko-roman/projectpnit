@@ -21,6 +21,13 @@ import org.springframework.web.client.RestTemplate;
 
 public class Activity extends AppCompatActivity {
 
+    /**
+     * Testing
+     *
+     * @param savedInstanceState
+     */
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
