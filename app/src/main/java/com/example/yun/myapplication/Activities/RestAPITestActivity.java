@@ -17,8 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.yun.myapplication.DaoAccess;
-import com.example.yun.myapplication.Entities.Favourites;
+import com.example.yun.myapplication.LocalDb.DaoAccess;
 import com.example.yun.myapplication.Entities.Medic;
 import com.example.yun.myapplication.Retrofit.NetworkService;
 import com.example.yun.myapplication.R;

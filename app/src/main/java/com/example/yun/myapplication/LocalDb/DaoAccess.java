@@ -1,4 +1,4 @@
-package com.example.yun.myapplication;
+package com.example.yun.myapplication.LocalDb;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
