@@ -2,42 +2,80 @@ package com.example.yun.myapplication.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Button;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
+import com.example.yun.myapplication.Entities.Medic;
 import com.example.yun.myapplication.R;
+import com.example.yun.myapplication.RecyclerViewAdapters.MedicAdapter;
+import com.example.yun.myapplication.Retrofit.NetworkService;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ListActivity extends AppCompatActivity {
+
+    private List<Medic> mMedicList;
+
+    private RecyclerView mRecyclerView;
+    private MedicAdapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+        mMedicList = null;
 
-        Button button4 = findViewById(R.id.button2);
-        button4.setOnClickListener(v -> {
-            Intent intent = new Intent(this, MedProfileActivity.class);
-            startActivity(intent);
-            overridePendingTransition(R.anim.slidein, R.anim.slideout);
-        });
-        Button button1 = findViewById(R.id.button3);
-        button1.setOnClickListener(v -> {
-            Intent intent = new Intent(this, MedProfileActivity.class);
-            startActivity(intent);
-            overridePendingTransition(R.anim.slidein, R.anim.slideout);
-        });
-        Button button2 = findViewById(R.id.button4);
-        button2.setOnClickListener(v -> {
-            Intent intent = new Intent(this, MedProfileActivity.class);
-            startActivity(intent);
-            overridePendingTransition(R.anim.slidein, R.anim.slideout);
-        });
-        Button button3 = findViewById(R.id.button5);
-        button3.setOnClickListener(v -> {
-            Intent intent = new Intent(this, MedProfileActivity.class);
-            startActivity(intent);
-            overridePendingTransition(R.anim.slidein, R.anim.slideout);
-        });
+        NetworkService.getInstance()
+                .getJSONApi()
+                .getAllPosts()
+                .enqueue(new Callback<List<Medic>>() {
+                    @Override
+                    public void onResponse(@NonNull Call<List<Medic>> call, @NonNull Response<List<Medic>> response) {
+                        mMedicList = response.body();
+                        buildRecyclerView();
+                    }
 
+                    @Override
+                    public void onFailure(@NonNull Call<List<Medic>> call, @NonNull Throwable t) {
+                        t.printStackTrace();
+                    }
+                });
+    }
+
+    /*public void insertItem(int position) {
+        mMedicList.add(position, new Medic(R.drawable.ic_android, "New Item At Position" + position, "This is Line 2"));
+        mAdapter.notifyItemInserted(position);
+    }
+
+    public void removeItem(int position) {
+        mMedicList.remove(position);
+        mAdapter.notifyItemRemoved(position);
+    }
+
+    public void changeItem(int position, String text) {
+        mMedicList.get(position).changeText1(text);
+        mAdapter.notifyItemChanged(position);
+    }*/
+
+    public void buildRecyclerView() {
+        mRecyclerView = findViewById(R.id.recyclerView);
+        mLayoutManager = new LinearLayoutManager(this);
+        mAdapter = new MedicAdapter(mMedicList);
+
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setAdapter(mAdapter);
+
+        mAdapter.setOnItemClickListener(position -> {
+            Intent intent = new Intent(this, MedProfileActivity.class);
+            intent.putExtra("position", position);
+            startActivity(intent);
+        });
     }
 }
