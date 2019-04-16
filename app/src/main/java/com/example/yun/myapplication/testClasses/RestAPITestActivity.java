@@ -1,4 +1,4 @@
-package com.example.yun.myapplication.Activities;
+package com.example.yun.myapplication.testClasses;
 
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;

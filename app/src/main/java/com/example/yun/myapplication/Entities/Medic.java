@@ -121,4 +121,5 @@ public class Medic {
     public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
+
 }
