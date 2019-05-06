@@ -52,14 +52,14 @@ public class ListActivity extends AppCompatActivity {
     /*public void insertItem(int position) {
         mMedicList.add(position, new Medic(R.drawable.ic_android, "New Item At Position" + position, "This is Line 2"));
         mAdapter.notifyItemInserted(position);
-    }
+    }*/
 
     public void removeItem(int position) {
         mMedicList.remove(position);
         mAdapter.notifyItemRemoved(position);
     }
 
-    public void changeItem(int position, String text) {
+    /*public void changeItem(int position, String text) {
         mMedicList.get(position).changeText1(text);
         mAdapter.notifyItemChanged(position);
     }*/
@@ -72,10 +72,25 @@ public class ListActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
 
-        mAdapter.setOnItemClickListener(position -> {
+        /*mAdapter.setOnItemClickListener(position -> {
             Intent intent = new Intent(this, MedProfileActivity.class);
             intent.putExtra("position", position);
             startActivity(intent);
+        });*/
+
+
+        mAdapter.setOnItemClickListener(new MedicAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Intent intent = new Intent(ListActivity.this, MedProfileActivity.class);
+                intent.putExtra("position", position);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onFavoriteClick(int position) {
+                removeItem(position);
+            }
         });
     }
 }

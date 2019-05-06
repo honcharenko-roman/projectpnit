@@ -20,6 +20,7 @@ public class MedicAdapter extends RecyclerView.Adapter<MedicAdapter.MedicViewHol
 
     public interface OnItemClickListener {
         void onItemClick(int position);
+        void onFavoriteClick(int position);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
@@ -30,12 +31,14 @@ public class MedicAdapter extends RecyclerView.Adapter<MedicAdapter.MedicViewHol
         public ImageView mImageView;
         public TextView mTextView1;
         public TextView mTextView2;
+        public ImageView mImageFavorite;
 
         public MedicViewHolder(View itemView, final OnItemClickListener listener) {
             super(itemView);
             mImageView = itemView.findViewById(R.id.imageView);
             mTextView1 = itemView.findViewById(R.id.textView);
             mTextView2 = itemView.findViewById(R.id.textView2);
+            mImageFavorite = itemView.findViewById(R.id.image_favorite);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -44,6 +47,18 @@ public class MedicAdapter extends RecyclerView.Adapter<MedicAdapter.MedicViewHol
                         int position = getAdapterPosition();
                         if (position != RecyclerView.NO_POSITION) {
                             listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
+
+            mImageFavorite.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            listener.onFavoriteClick(position);
                         }
                     }
                 }
