@@ -32,11 +32,11 @@ public class MedProfileActivity extends AppCompatActivity {
         category = findViewById(R.id.textcategory);
 
         Intent mIntent = getIntent();
-        int intValue = mIntent.getIntExtra("position", 0);
+        long medicId = mIntent.getLongExtra("position", 0);
 
         NetworkService.getInstance()
                 .getJSONApi()
-                .getMedicWithID(intValue)
+                .getMedicWithID(medicId)
                 .enqueue(new Callback<Medic>() {
                     @Override
                     public void onResponse(@NonNull Call<Medic> call, @NonNull Response<Medic> response) {

@@ -12,7 +12,7 @@ import retrofit2.http.Query;
 public interface JSONPlaceHolderApi {
 
     @GET("/api/account-medics/{id}")
-    public Call<Medic> getMedicWithID(@Path("id") int id);
+    public Call<Medic> getMedicWithID(@Path("id") long id);
 
     @GET("/api/account-medics")
     public Call<List<Medic>> getAllPosts();
