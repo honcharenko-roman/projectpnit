@@ -77,7 +77,7 @@ public class RestAPITestActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(@NonNull Call<List<Medic>> call, @NonNull Response<List<Medic>> response) {
                             List<Medic> medics = response.body();
-                            textView.append(medics.get(0).getLastName());
+                            textView.append(medics.get(0).getSurname());
                             //Favourites favourite = new Favourites(medics.get(0));
                             //favouritesDatabase.daoAccess().insertFavourite(medics.get(0));
                             //textView.append(favouritesDatabase.daoAccess().getAll().getValue().get(0).getLastName());
@@ -154,7 +154,7 @@ public class RestAPITestActivity extends AppCompatActivity {
         protected void onPostExecute(Medic medic) {
             TextView greetingIdText = findViewById(R.id.id_value);
             TextView greetingContentText = findViewById(R.id.content_value);
-            greetingIdText.setText(medic.getAddress());
+            greetingIdText.setText(medic.getAdress());
             greetingContentText.setText(String.valueOf(medic.getId()));
         }
     }

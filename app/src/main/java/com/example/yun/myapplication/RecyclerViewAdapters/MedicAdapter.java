@@ -82,8 +82,8 @@ public class MedicAdapter extends RecyclerView.Adapter<MedicAdapter.MedicViewHol
         Medic currentItem = mMedicList.get(position);
 
         //holder.mImageView.setImageResource(currentItem.getImageResource());
-        holder.mTextView1.setText(currentItem.getLastName());
-        holder.mTextView1.append(" " + currentItem.getFirstName());
+        holder.mTextView1.setText(currentItem.getSurname());
+        holder.mTextView1.append(" " + currentItem.getName());
         holder.mTextView2.setText(currentItem.getCategory());
     }
 

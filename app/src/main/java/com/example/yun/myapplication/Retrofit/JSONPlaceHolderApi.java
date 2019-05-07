@@ -11,10 +11,10 @@ import retrofit2.http.Query;
 
 public interface JSONPlaceHolderApi {
 
-    @GET("/medic")
-    public Call<Medic> getPostWithID(@Query("id") int id);
+    @GET("/api/account-medics/{id}")
+    public Call<Medic> getMedicWithID(@Path("id") int id);
 
-    @GET("/profiles/medics")
+    @GET("/api/account-medics")
     public Call<List<Medic>> getAllPosts();
 }
 

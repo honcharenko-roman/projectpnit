@@ -36,14 +36,14 @@ public class MedProfileActivity extends AppCompatActivity {
 
         NetworkService.getInstance()
                 .getJSONApi()
-                .getPostWithID(intValue)
+                .getMedicWithID(intValue)
                 .enqueue(new Callback<Medic>() {
                     @Override
                     public void onResponse(@NonNull Call<Medic> call, @NonNull Response<Medic> response) {
                         if (response.body() != null) {
                             Medic medic = response.body();
-                            name.setText(medic.getLastName());
-                            name.append(" " + medic.getFirstName());
+                            name.setText(medic.getSurname());
+                            name.append(" " + medic.getName());
                             category.setText(medic.getCategory());
                         }
                     }
