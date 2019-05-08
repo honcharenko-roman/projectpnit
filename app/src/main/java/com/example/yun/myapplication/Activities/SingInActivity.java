@@ -1,5 +1,6 @@
 package com.example.yun.myapplication.Activities;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -31,6 +32,11 @@ public class SingInActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.createAccountText)).setTypeface(font);
         ((EditText)findViewById(R.id.passEditText)).setTypeface(font);
         ((EditText)findViewById(R.id.emailEditText)).setTypeface(font);
+
+        findViewById(R.id.createAccountText).setOnClickListener(v-> {
+            Intent intent = new Intent(this, DoctorClientActivity.class);
+            startActivity(intent);
+        });
 
         //Displaying TextInputLayout Error
         /*TextInputLayout emailLayout = (TextInputLayout) findViewById(R.id
