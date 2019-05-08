@@ -1,17 +1,13 @@
 package com.example.yun.myapplication.Activities;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 
 import com.example.yun.myapplication.Entities.Medic;
-import com.example.yun.myapplication.Entities.Medic2;
 import com.example.yun.myapplication.R;
 import com.example.yun.myapplication.Retrofit.NetworkService;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,7 +15,7 @@ import retrofit2.Response;
 
 public class EditProfileActivity extends AppCompatActivity {
 
-    private Medic2 medic;
+    private Medic medic;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,22 +25,31 @@ public class EditProfileActivity extends AppCompatActivity {
         EditText nameField  = findViewById(R.id.nameField);
 
         nameField.getText().append("huy");
-        medic = new Medic2(
-                nameField.getText().toString()
+        medic = new Medic(
+                nameField.getText().toString(),
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                true,
+                null
         );
 
 
         findViewById(R.id.EditProfileText).setOnClickListener(v->{
 
-            Call<Medic2> call = NetworkService.getInstance().getJSONApi().postMedic(medic);
-            call.enqueue(new Callback<Medic2>() {
+            Call<Medic> call = NetworkService.getInstance().getJSONApi().postMedic(medic);
+            call.enqueue(new Callback<Medic>() {
                 @Override
-                public void onResponse(Call<Medic2> call, Response<Medic2> response) {
+                public void onResponse(Call<Medic> call, Response<Medic> response) {
 
                 }
 
                 @Override
-                public void onFailure(Call<Medic2> call, Throwable t) {
+                public void onFailure(Call<Medic> call, Throwable t) {
 
                 }
             });

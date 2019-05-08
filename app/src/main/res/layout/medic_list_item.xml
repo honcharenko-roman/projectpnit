@@ -11,14 +11,6 @@
         android:layout_height="match_parent"
         android:layout_margin="4dp">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="8dp"
-            android:padding="2dp" />
-
         <TextView
             android:id="@+id/textView"
             android:layout_width="188dp"
@@ -67,6 +59,15 @@
             android:layout_marginStart="9dp"
             android:layout_marginTop="13dp"
             app:srcCompat="@drawable/ic_favorite_blank" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="8dp"
+            android:padding="2dp"
+            app:srcCompat="@drawable/ic_editprofile_avatar" />
 
     </RelativeLayout>
 

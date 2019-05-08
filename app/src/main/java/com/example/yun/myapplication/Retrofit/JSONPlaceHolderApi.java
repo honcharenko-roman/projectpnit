@@ -1,7 +1,6 @@
 package com.example.yun.myapplication.Retrofit;
 
 import com.example.yun.myapplication.Entities.Medic;
-import com.example.yun.myapplication.Entities.Medic2;
 
 import java.util.List;
 
@@ -10,7 +9,6 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
 
 public interface JSONPlaceHolderApi {
 
@@ -21,7 +19,7 @@ public interface JSONPlaceHolderApi {
     public Call<List<Medic>> getAllPosts();
 
     @POST("/api/account-medics")
-    public Call<Medic2> postMedic(@Body Medic2 medic);
+    public Call<Medic> postMedic(@Body Medic medic);
 }
 
 

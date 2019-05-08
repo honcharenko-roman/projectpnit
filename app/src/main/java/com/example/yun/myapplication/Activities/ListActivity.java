@@ -83,7 +83,7 @@ public class ListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(int position) {
                 Intent intent = new Intent(ListActivity.this, MedProfileActivity.class);
-//                intent.putExtra("position", mMedicList.get(position).getId());
+                intent.putExtra("position", mMedicList.get(position).getId());
                 startActivity(intent);
             }
 
