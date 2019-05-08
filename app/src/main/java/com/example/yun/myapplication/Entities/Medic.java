@@ -78,7 +78,25 @@ public class Medic {
         this.comments = comments;
     }
 
+    public Medic(String name, String surname, String telephone, String email, Integer experience, String password, String adress, String info, Boolean verification, String category, List<Comment> comments) {
+        this.name = name;
+        this.surname = surname;
+        this.telephone = telephone;
+        this.email = email;
+        this.experience = experience;
+        this.password = password;
+        this.adress = adress;
+        this.info = info;
+        this.verification = verification;
+        this.category = category;
+        this.comments = comments;
+    }
+
     public Medic() {
+    }
+
+    public Medic(String name) {
+        this.name = name;
     }
 
     public long getId() {

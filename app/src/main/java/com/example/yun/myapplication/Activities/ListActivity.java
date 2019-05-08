@@ -92,5 +92,10 @@ public class ListActivity extends AppCompatActivity {
                 removeItem(position);
             }
         });
+
+        findViewById(R.id.listContinueButton).setOnClickListener(v->{
+            Intent intent = new Intent(this, SingInActivity.class);
+            startActivity(intent);
+        });
     }
 }
