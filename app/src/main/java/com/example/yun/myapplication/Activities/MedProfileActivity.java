@@ -42,9 +42,9 @@ public class MedProfileActivity extends AppCompatActivity {
                     public void onResponse(@NonNull Call<Medic> call, @NonNull Response<Medic> response) {
                         if (response.body() != null) {
                             Medic medic = response.body();
-                            name.setText(medic.getSurname());
+//                            name.setText(medic.getSurname());
                             name.append(" " + medic.getName());
-                            category.setText(medic.getCategory());
+//                            category.setText(medic.getCategory());
                         }
                     }
 

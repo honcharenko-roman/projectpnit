@@ -83,7 +83,7 @@ public class ListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(int position) {
                 Intent intent = new Intent(ListActivity.this, MedProfileActivity.class);
-                intent.putExtra("position", mMedicList.get(position).getId());
+//                intent.putExtra("position", mMedicList.get(position).getId());
                 startActivity(intent);
             }
 
@@ -94,7 +94,7 @@ public class ListActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.listContinueButton).setOnClickListener(v->{
-            Intent intent = new Intent(this, SingInActivity.class);
+            Intent intent = new Intent(ListActivity.this, SingInActivity.class);
             startActivity(intent);
         });
     }

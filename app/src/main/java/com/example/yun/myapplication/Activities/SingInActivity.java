@@ -21,7 +21,7 @@ public class SingInActivity extends AppCompatActivity {
      */
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        Objects.requireNonNull(getSupportActionBar()).hide();
+//        Objects.requireNonNull(getSupportActionBar()).hide();
         setContentView(R.layout.activity_signin);
 
         Typeface font = Typeface.createFromAsset(getAssets(), "Montserrat-Black.ttf");

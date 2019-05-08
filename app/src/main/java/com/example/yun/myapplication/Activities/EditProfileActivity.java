@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 
 import com.example.yun.myapplication.Entities.Medic;
+import com.example.yun.myapplication.Entities.Medic2;
 import com.example.yun.myapplication.R;
 import com.example.yun.myapplication.Retrofit.NetworkService;
 
@@ -18,33 +19,50 @@ import retrofit2.Response;
 
 public class EditProfileActivity extends AppCompatActivity {
 
-    private Medic medic;
+    private Medic2 medic;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
-        EditText nameField  = (EditText)findViewById(R.id.nameField);
+        EditText nameField  = findViewById(R.id.nameField);
 
-        medic = new Medic(
+        nameField.getText().append("huy");
+        medic = new Medic2(
                 nameField.getText().toString()
         );
 
-        findViewById(R.id.EditProfileText).setOnClickListener(v->{
-            NetworkService.getInstance()
-                    .getJSONApi()
-                    .postMedic(medic)
-                    .enqueue(new Callback<Medic>() {
-                        @Override
-                        public void onResponse(@NonNull Call<Medic> call, @NonNull Response<Medic> response) {
-                        }
 
-                        @Override
-                        public void onFailure(@NonNull Call<Medic> call, @NonNull Throwable t) {
-                            t.printStackTrace();
-                        }
-                    });
+        findViewById(R.id.EditProfileText).setOnClickListener(v->{
+
+            Call<Medic2> call = NetworkService.getInstance().getJSONApi().postMedic(medic);
+            call.enqueue(new Callback<Medic2>() {
+                @Override
+                public void onResponse(Call<Medic2> call, Response<Medic2> response) {
+
+                }
+
+                @Override
+                public void onFailure(Call<Medic2> call, Throwable t) {
+
+                }
+            });
+
+
+//            NetworkService.getInstance()
+//                    .getJSONApi()
+//                    .postMedic(medic)
+//                    .enqueue(new Callback<Medic2>() {
+//                        @Override
+//                        public void onResponse(@NonNull Call<Medic2> call, @NonNull Response<Medic2> response) {
+//                        }
+//
+//                        @Override
+//                        public void onFailure(@NonNull Call<Medic2> call, @NonNull Throwable t) {
+//                            t.printStackTrace();
+//                        }
+//                    });
         });
     }
 }

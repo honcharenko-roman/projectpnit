@@ -1,6 +1,7 @@
 package com.example.yun.myapplication.Retrofit;
 
 import com.example.yun.myapplication.Entities.Medic;
+import com.example.yun.myapplication.Entities.Medic2;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public interface JSONPlaceHolderApi {
     public Call<List<Medic>> getAllPosts();
 
     @POST("/api/account-medics")
-    public Call<Medic> postMedic(@Body Medic medic);
+    public Call<Medic2> postMedic(@Body Medic2 medic);
 }
 
 
