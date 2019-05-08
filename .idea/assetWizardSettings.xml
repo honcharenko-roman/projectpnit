@@ -23,7 +23,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/G:/Android/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_favorite_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/D:/AndroidStudio/plugins/android/lib/android.jar!/images/material_design_icons/image/ic_healing_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -34,11 +34,12 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="height" value="462" />
-                            <entry key="outputName" value="ic_doctorclient_doctor_logo" />
+                            <entry key="color" value="be0e00" />
+                            <entry key="height" value="660" />
+                            <entry key="outputName" value="ic_red_cross_icon" />
                             <entry key="overrideSize" value="true" />
-                            <entry key="sourceFile" value="C:\Users\Yun\Downloads\Telegram Desktop\docorclientWindow\docorclient\doctor_logo.svg" />
-                            <entry key="width" value="431" />
+                            <entry key="sourceFile" value="D:\Downloads\Red_Cross_icon.svg" />
+                            <entry key="width" value="660" />
                           </map>
                         </option>
                       </PersistentState>

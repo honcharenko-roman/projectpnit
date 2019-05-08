@@ -7,31 +7,133 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/cross"
+        android:layout_width="117dp"
+        android:layout_height="91dp"
+        app:layout_constraintBottom_toBottomOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="@+id/button"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/button"
+        app:layout_constraintTop_toTopOf="@+id/button"
+        app:srcCompat="@drawable/ic_red_cross_icon" />
+
+    <Button
+        android:id="@+id/button"
         android:layout_width="0dp"
-        android:layout_height="731dp"
-        android:layout_marginBottom="8dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="40dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="@+id/bottom"
+        app:layout_constraintEnd_toEndOf="@+id/bottom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pocket_Medic "
+        app:layout_constraintVertical_bias="0.18" />
+
+    <ImageView
+        android:id="@+id/top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:accessibilityLiveRegion="none"
+        android:scaleType="fitStart"
+        app:layout_constraintBottom_toBottomOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_middle_panel" />
+
+    <ImageView
+        android:id="@+id/bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitEnd"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/l_1_12" />
+        app:srcCompat="@drawable/ic_bottom_panel" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="184dp"
-        android:layout_height="94dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="224dp"
-        android:layout_marginEnd="8dp"
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:accessibilityLiveRegion="none"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/bottom"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.948" />
+        app:layout_constraintTop_toTopOf="@+id/top"
+        app:layout_constraintVertical_bias="0.32999998"
+        app:srcCompat="@drawable/ic_logo" />
+
+    <TextView
+        android:id="@+id/Pocket_Medic "
+        android:layout_width="match_parent"
+        android:layout_height="71dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/montserrat"
+        android:gravity="center"
+        android:text="Pocket Medic "
+        android:textColor="#FFFFFF"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/pocket_Medic "
+        android:layout_width="372dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/montserrat"
+        android:gravity="center"
+        android:text="Find your perfect medic"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Pocket_Medic " />
+
+    <TextView
+        android:id="@+id/now"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/montserrat"
+        android:text="now"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/cross"
+        app:layout_constraintEnd_toEndOf="@+id/button"
+        app:layout_constraintStart_toStartOf="@+id/cross"
+        app:layout_constraintTop_toTopOf="@+id/cross"
+        app:layout_constraintVertical_bias="0.48000002" />
+
+    <TextView
+        android:id="@+id/Start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Start"
+        android:textColor="#BE0E01"
+        android:textSize="42sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/button"
+        app:layout_constraintEnd_toStartOf="@+id/cross"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/button"
+        app:layout_constraintTop_toTopOf="@+id/button"
+        app:layout_constraintVertical_bias="0.48000002" />
 
 </android.support.constraint.ConstraintLayout>
