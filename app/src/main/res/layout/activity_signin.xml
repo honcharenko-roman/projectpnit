@@ -118,6 +118,7 @@
         android:text="@string/sing_in"
         android:textColor="#FFFFFF"
         android:textSize="50sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/top_panel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/top_panel"
