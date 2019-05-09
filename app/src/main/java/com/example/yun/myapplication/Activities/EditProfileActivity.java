@@ -22,25 +22,27 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
-        EditText nameField  = findViewById(R.id.nameField);
+        EditText nameField  = findViewById(R.id.editProfileNameField);
+        EditText surnameField  = findViewById(R.id.editProfileSurnameField);
+        EditText addressField  = findViewById(R.id.editProfileAddressField);
+        EditText infoField  = findViewById(R.id.editProfileInformationField);
+        EditText experienceField  = findViewById(R.id.editProfileExperienceField);
+        EditText telephoneField  = findViewById(R.id.editProfilePhoneNumberField);
 
-        nameField.getText().append("huy");
-        medic = new Medic(
-                nameField.getText().toString(),
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                true,
-                null
-        );
+        findViewById(R.id.editProfileText).setOnClickListener(v->{
 
-
-        findViewById(R.id.EditProfileText).setOnClickListener(v->{
-
+            medic = new Medic(
+                    nameField.getText().toString(),
+                    surnameField.getText().toString(),
+                    telephoneField.getText().toString(),
+                    null,
+                    Integer.parseInt(experienceField.getText().toString()),
+                    null,
+                    addressField.getText().toString(),
+                    infoField.getText().toString(),
+                    true,
+                    null
+            );
             Call<Medic> call = NetworkService.getInstance().getJSONApi().postMedic(medic);
             call.enqueue(new Callback<Medic>() {
                 @Override
@@ -53,21 +55,6 @@ public class EditProfileActivity extends AppCompatActivity {
 
                 }
             });
-
-
-//            NetworkService.getInstance()
-//                    .getJSONApi()
-//                    .postMedic(medic)
-//                    .enqueue(new Callback<Medic2>() {
-//                        @Override
-//                        public void onResponse(@NonNull Call<Medic2> call, @NonNull Response<Medic2> response) {
-//                        }
-//
-//                        @Override
-//                        public void onFailure(@NonNull Call<Medic2> call, @NonNull Throwable t) {
-//                            t.printStackTrace();
-//                        }
-//                    });
         });
     }
 }

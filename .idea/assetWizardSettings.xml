@@ -16,30 +16,15 @@
                   <entry key="vectorAssetStep">
                     <value>
                       <PersistentState>
-                        <option name="children">
-                          <map>
-                            <entry key="clipartAsset">
-                              <value>
-                                <PersistentState>
-                                  <option name="values">
-                                    <map>
-                                      <entry key="url" value="jar:file:/D:/AndroidStudio/plugins/android/lib/android.jar!/images/material_design_icons/image/ic_healing_black_24dp.xml" />
-                                    </map>
-                                  </option>
-                                </PersistentState>
-                              </value>
-                            </entry>
-                          </map>
-                        </option>
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="be0e00" />
-                            <entry key="height" value="660" />
-                            <entry key="outputName" value="ic_red_cross_icon" />
+                            <entry key="height" value="1155" />
+                            <entry key="outputName" value="ic_medprofile_white_panel" />
                             <entry key="overrideSize" value="true" />
-                            <entry key="sourceFile" value="D:\Downloads\Red_Cross_icon.svg" />
-                            <entry key="width" value="660" />
+                            <entry key="sourceFile" value="C:\Users\Yun\Downloads\Telegram Desktop\M-rate\white_panel.svg" />
+                            <entry key="width" value="1080" />
                           </map>
                         </option>
                       </PersistentState>
