@@ -5,6 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ScrollView
+        android:layout_width="374dp"
+        android:layout_height="457dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editProfileExperienceField"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editProfileTopPanel">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/bottom2"
+        android:layout_width="412dp"
+        android:layout_height="75dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_bottom_panel" />
+
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="350dp"
@@ -200,19 +225,19 @@
         app:layout_constraintTop_toBottomOf="@+id/editProfileTopPanel" />
 
     <!--<EditText-->
-        <!--android:id="@+id/editText11"-->
-        <!--android:layout_width="350dp"-->
-        <!--android:layout_height="40"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_marginTop="3dp"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--android:ems="10"-->
-        <!--android:hint="Location"-->
-        <!--android:inputType="textPersonName|text"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintHorizontal_bias="0.511"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toBottomOf="@+id/forgotPasswordText3" />-->
+    <!--android:id="@+id/editText11"-->
+    <!--android:layout_width="350dp"-->
+    <!--android:layout_height="40"-->
+    <!--android:layout_marginStart="8dp"-->
+    <!--android:layout_marginTop="3dp"-->
+    <!--android:layout_marginEnd="8dp"-->
+    <!--android:ems="10"-->
+    <!--android:hint="Location"-->
+    <!--android:inputType="textPersonName|text"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintHorizontal_bias="0.511"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/forgotPasswordText3" />-->
 
     <!--<EditText-->
     <!--android:id="@+id/editText9"-->
@@ -229,17 +254,17 @@
     <!--app:layout_constraintTop_toBottomOf="@+id/editText11" />-->
 
     <!--<EditText-->
-        <!--android:id="@+id/editText10"-->
-        <!--android:layout_width="350dp"-->
-        <!--android:layout_height="40"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--android:ems="10"-->
-        <!--android:hint="About yourself"-->
-        <!--android:inputType="textPersonName|text"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toBottomOf="@+id/editText9" />-->
+    <!--android:id="@+id/editText10"-->
+    <!--android:layout_width="350dp"-->
+    <!--android:layout_height="40"-->
+    <!--android:layout_marginStart="8dp"-->
+    <!--android:layout_marginEnd="8dp"-->
+    <!--android:ems="10"-->
+    <!--android:hint="About yourself"-->
+    <!--android:inputType="textPersonName|text"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/editText9" />-->
 
     <TextView
         android:id="@+id/editProfileText"
@@ -257,17 +282,29 @@
         app:layout_constraintStart_toStartOf="@+id/top_panel"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/save"
+    <TextView
+        android:id="@+id/sendButton"
+        android:layout_width="195dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/montserrat"
+        android:gravity="center"
+        android:text="Continue..."
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="@+id/bottom2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="@+id/bottom2"
+        app:layout_constraintVertical_bias="0.644" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="140dp"
-        android:layout_marginEnd="8dp"
-        android:text="save"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.074"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editProfileTopPanel" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
 </android.support.constraint.ConstraintLayout>

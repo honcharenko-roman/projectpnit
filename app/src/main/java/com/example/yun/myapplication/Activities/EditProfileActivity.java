@@ -29,7 +29,7 @@ public class EditProfileActivity extends AppCompatActivity {
         EditText experienceField  = findViewById(R.id.editProfileExperienceField);
         EditText telephoneField  = findViewById(R.id.editProfilePhoneNumberField);
 
-        findViewById(R.id.editProfileText).setOnClickListener(v->{
+        findViewById(R.id.sendButton).setOnClickListener(v->{
 
             medic = new Medic(
                     nameField.getText().toString(),

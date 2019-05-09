@@ -6,50 +6,6 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/docOrClient_top_panel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_signin_top_panel" />
-
-    <TextView
-        android:id="@+id/"
-        android:layout_width="195dp"
-        android:layout_height="30dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
-        android:fontFamily="@font/montserrat"
-        android:gravity="center"
-        android:text="I am a..."
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toBottomOf="@+id/docOrClient_top_panel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editProfileText2" />
-
-    <TextView
-        android:id="@+id/editProfileText2"
-        android:layout_width="match_parent"
-        android:layout_height="71dp"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/montserrat"
-        android:gravity="center"
-        android:text="@string/create_account"
-        android:textColor="#FFFFFF"
-        android:textSize="45dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/top_panel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/top_panel"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
         android:id="@+id/whitePanelDoctor"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -65,13 +21,14 @@
         android:id="@+id/whitePanelPatient"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:scaleType="fitXY"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/I am a..."
+        app:layout_constraintTop_toTopOf="@+id/iama"
         app:srcCompat="@drawable/white_pannel" />
 
     <android.support.constraint.Guideline
@@ -115,7 +72,7 @@
         app:srcCompat="@drawable/ic_docorclient_client_logo" />
 
     <TextView
-        android:id="@+id/I am a..."
+        android:id="@+id/Iama"
         android:layout_width="195dp"
         android:layout_height="30dp"
         android:layout_marginStart="32dp"
@@ -138,7 +95,7 @@
         app:layout_constraintVertical_bias="0.176" />
 
     <TextView
-        android:id="@+id/2"
+        android:id="@+id/clientText"
         android:layout_width="195dp"
         android:layout_height="30dp"
         android:layout_marginStart="32dp"
@@ -181,5 +138,49 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5" />
+
+    <ImageView
+        android:id="@+id/docOrClient_top_panel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_signin_top_panel" />
+
+    <TextView
+        android:id="@+id/editProfileText2"
+        android:layout_width="match_parent"
+        android:layout_height="71dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/montserrat"
+        android:gravity="center"
+        android:text="@string/create_account"
+        android:textColor="#FFFFFF"
+        android:textSize="45dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/top_panel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/top_panel"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/iama"
+        android:layout_width="195dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/montserrat"
+        android:gravity="center"
+        android:text="I am a..."
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="@+id/docOrClient_top_panel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editProfileText2" />
 
 </android.support.constraint.ConstraintLayout>
