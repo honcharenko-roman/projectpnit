@@ -25,10 +25,10 @@ public class DoctorClientActivity extends AppCompatActivity {
         setContentView(R.layout.activity_doctorclient);
 
         Typeface font = Typeface.createFromAsset(getAssets(), "Montserrat-Italic.ttf");
-        ((TextView) findViewById(R.id.docorclientDoctorText)).setTypeface(font);
-        ((TextView) findViewById(R.id.docorclientPatientText)).setTypeface(font);
+//        ((TextView) findViewById(R.id.docorclientDoctorText)).setTypeface(font);
+//        ((TextView) findViewById(R.id.docorclientPatientText)).setTypeface(font);
 
-        findViewById(R.id.docorclientTopFrameLayout).setOnClickListener(v -> {
+        findViewById(R.id.whitePanelDoctor).setOnClickListener(v -> {
             Intent intent = new Intent(this, EditProfileActivity.class);
             startActivity(intent);
         });
