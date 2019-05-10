@@ -151,26 +151,6 @@ public class ListActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.map) {
-            Toast.makeText(getApplicationContext(), "Logout user!", Toast.LENGTH_LONG).show();
-            return true;
-        }
-
-        if (id == R.id.List) {
-            Toast.makeText(getApplicationContext(), "All notifications marked as read!", Toast.LENGTH_LONG).show();
-        }
-
-        if (id == R.id.Profile) {
-            Toast.makeText(getApplicationContext(), "Clear all notifications!", Toast.LENGTH_LONG).show();
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     private void selectNavMenu() {
         mNavigationView.getMenu().getItem(1).setChecked(true);
     }
@@ -191,23 +171,23 @@ public class ListActivity extends AppCompatActivity {
                         break;
                     case R.id.Profile:
                         mDrawerLayout.closeDrawers();
-                        startActivity(new Intent(ListActivity.this, SplashActivity.class));
+                        startActivity(new Intent(ListActivity.this, MapActivity.class));
                         break;
                     case R.id.favourites:
                         mDrawerLayout.closeDrawers();
-                        startActivity(new Intent(ListActivity.this, SplashActivity.class));
+                        startActivity(new Intent(ListActivity.this, error404Activity.class));
                         break;
                     case R.id.premium:
                         mDrawerLayout.closeDrawers();
-                        startActivity(new Intent(ListActivity.this, SplashActivity.class));
+                        startActivity(new Intent(ListActivity.this, error404Activity.class));
                         break;
                     case R.id.map:
                         mDrawerLayout.closeDrawers();
-                        startActivity(new Intent(ListActivity.this, SplashActivity.class));
+                        startActivity(new Intent(ListActivity.this, error404Activity.class));
                         return true;
                     case R.id.settings:
                         mDrawerLayout.closeDrawers();
-                        startActivity(new Intent(ListActivity.this, SplashActivity.class));
+                        startActivity(new Intent(ListActivity.this, error404Activity.class));
                         return true;
                     case R.id.signIn:
                         startActivity(new Intent(ListActivity.this, SingInActivity.class));

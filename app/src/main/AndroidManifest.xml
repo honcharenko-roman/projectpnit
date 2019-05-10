@@ -22,6 +22,8 @@
         </activity>
         <activity android:name=".Activities.MainActivity">
         </activity>
+        <activity android:name=".Activities.error404Activity">
+        </activity>
         <activity android:name=".Activities.SingInActivity">
         </activity>
         <activity android:name=".Activities.CreateAccountActivity">

@@ -21,7 +21,6 @@ public class SingInActivity extends AppCompatActivity {
      */
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-//        Objects.requireNonNull(getSupportActionBar()).hide();
         setContentView(R.layout.activity_signin);
 
         Typeface font = Typeface.createFromAsset(getAssets(), "Montserrat-Black.ttf");
@@ -37,23 +36,5 @@ public class SingInActivity extends AppCompatActivity {
             Intent intent = new Intent(this, DoctorClientActivity.class);
             startActivity(intent);
         });
-
-        //Displaying TextInputLayout Error
-        /*TextInputLayout emailLayout = (TextInputLayout) findViewById(R.id
-                .fEmailLayout);
-        emailLayout.setErrorEnabled(true);
-        emailLayout.setError("Min 2 chars required");*/
-
-        //Displaying EditText Error
-        /*EditText age = (EditText) findViewById(R.id.emailEditText);
-        age.setError("Required");*/
-
-        //Displaying both TextInputLayout and EditText Errors
-        /*TextInputLayout passLayout = (TextInputLayout) findViewById(R.id
-                .fPassLayout);
-        passLayout.setErrorEnabled(true);
-        passLayout.setError("Please enter a phone number");
-        EditText phone = (EditText) findViewById(R.id.passEditText);
-        phone.setError("Required");*/
     }
 }
