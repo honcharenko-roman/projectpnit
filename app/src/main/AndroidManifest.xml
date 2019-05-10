@@ -32,6 +32,8 @@
         </activity>
         <activity android:name=".Activities.EditProfileActivity">
         </activity>
+        <activity android:name=".Activities.EditClientProfileActivity">
+        </activity>
         <activity android:name=".Activities.FavouritesActivity">
         </activity>
         <activity android:name=".Activities.ListActivity">

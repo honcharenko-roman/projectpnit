@@ -1,5 +1,6 @@
 package com.example.yun.myapplication.Retrofit;
 
+import com.example.yun.myapplication.Entities.Account;
 import com.example.yun.myapplication.Entities.Medic;
 
 import java.util.List;
@@ -24,6 +25,9 @@ public interface JSONPlaceHolderApi {
 
     @DELETE("/api/account-medics")
     public Call<Medic> deleteMedics();
+
+    @POST("/api/account-ms")
+    public Call<Account> postAccount(@Body Account account);
 }
 
 

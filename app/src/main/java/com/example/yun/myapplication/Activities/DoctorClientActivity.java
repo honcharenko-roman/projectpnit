@@ -18,14 +18,14 @@ public class DoctorClientActivity extends AppCompatActivity {
 //        ((TextView) findViewById(R.id.docorclientDoctorText)).setTypeface(font);
 //        ((TextView) findViewById(R.id.docorclientPatientText)).setTypeface(font);
 
-        findViewById(R.id.whitePanelClient).setOnClickListener(v -> {
+        findViewById(R.id.whitePanelDoctor).setOnClickListener(v -> {
             Intent intent = new Intent(this, EditProfileActivity.class);
             startActivity(intent);
         });
 
-        /*findViewById(R.id.docorclientBottomFrameLayout).setOnClickListener(v -> {
-            Intent intent = new Intent(this, EditPatientProfileActivity.class);
+        findViewById(R.id.whitePanelClient).setOnClickListener(v -> {
+            Intent intent = new Intent(this, EditClientProfileActivity.class);
             startActivity(intent);
-        });*/
+        });
     }
 }

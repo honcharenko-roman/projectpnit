@@ -1,40 +1,74 @@
 package com.example.yun.myapplication.Entities;
 
-import java.util.ArrayList;
-import java.util.List;
+import android.arch.persistence.room.Entity;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+@Entity
 public class Account {
 
-    private long account_id;
-    private String firstName;
-    private String lastName;
-    private String email;
+    private Long id;
+    private String name;
+    private String surname;
+    private String telephone;
+    private String eMail;
     private String password;
-    private List<Medic> favourites = new ArrayList<>();
-    private Medic medic;
+    private String info;
+    private String address;
+    //private Set<AccountMedic> favourites = new HashSet<>();
 
-    public String getFirstName() {
-        return firstName;
+    public Account(String name, String surname, String telephone, String eMail, String password, String info, String address) {
+        this.id = null;
+        this.name = name;
+        this.surname = surname;
+        this.telephone = telephone;
+        this.eMail = eMail;
+        this.password = password;
+        this.info = info;
+        this.address = address;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public long getId() {
+        return id;
     }
 
-    public String getLastName() {
-        return lastName;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public String getName() {
+        return name;
     }
 
-    public String getEmail() {
-        return email;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String geteMail() {
+        return eMail;
+    }
+
+    public void seteMail(String eMail) {
+        this.eMail = eMail;
     }
 
     public String getPassword() {
@@ -45,29 +79,19 @@ public class Account {
         this.password = password;
     }
 
-    public long getAccount_id() {
-        return account_id;
+    public String getInfo() {
+        return info;
     }
 
-    public void setAccount_id(long account_id) {
-        this.account_id = account_id;
+    public void setInfo(String info) {
+        this.info = info;
     }
 
-    public List<Medic> getFavourites() {
-        return favourites;
+    public String getAddress() {
+        return address;
     }
 
-    public void setFavourites(ArrayList<Medic> favourites) {
-        this.favourites = favourites;
+    public void setAddress(String address) {
+        this.address = address;
     }
-
-    public Account() {
-    }
-
-    public Account(String firstName, String lastName, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-    }
-
 }

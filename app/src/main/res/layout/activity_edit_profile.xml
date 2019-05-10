@@ -134,9 +134,9 @@
         android:textColor="#FFFFFF"
         android:textSize="50sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/top_panel"
+        app:layout_constraintBottom_toBottomOf="@+id/editProfileTopPanel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/top_panel"
+        app:layout_constraintStart_toStartOf="@+id/editProfileTopPanel"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
@@ -234,47 +234,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.741"
         app:layout_constraintStart_toStartOf="@+id/guideline4" />
-
-    <!--<EditText-->
-    <!--android:id="@+id/editText11"-->
-    <!--android:layout_width="350dp"-->
-    <!--android:layout_height="40"-->
-    <!--android:layout_marginStart="8dp"-->
-    <!--android:layout_marginTop="3dp"-->
-    <!--android:layout_marginEnd="8dp"-->
-    <!--android:ems="10"-->
-    <!--android:hint="Location"-->
-    <!--android:inputType="textPersonName|text"-->
-    <!--app:layout_constraintEnd_toEndOf="parent"-->
-    <!--app:layout_constraintHorizontal_bias="0.511"-->
-    <!--app:layout_constraintStart_toStartOf="parent"-->
-    <!--app:layout_constraintTop_toBottomOf="@+id/forgotPasswordText3" />-->
-
-    <!--<EditText-->
-    <!--android:id="@+id/editText9"-->
-    <!--android:layout_width="350dp"-->
-    <!--android:layout_height="40"-->
-    <!--android:layout_marginStart="8dp"-->
-    <!--android:layout_marginEnd="8dp"-->
-    <!--android:ems="10"-->
-    <!--android:hint="Telephone number"-->
-    <!--android:inputType="phone"-->
-    <!--app:layout_constraintEnd_toEndOf="parent"-->
-    <!--app:layout_constraintHorizontal_bias="0.511"-->
-    <!--app:layout_constraintStart_toStartOf="parent"-->
-    <!--app:layout_constraintTop_toBottomOf="@+id/editText11" />-->
-
-    <!--<EditText-->
-    <!--android:id="@+id/editText10"-->
-    <!--android:layout_width="350dp"-->
-    <!--android:layout_height="40"-->
-    <!--android:layout_marginStart="8dp"-->
-    <!--android:layout_marginEnd="8dp"-->
-    <!--android:ems="10"-->
-    <!--android:hint="About yourself"-->
-    <!--android:inputType="textPersonName|text"-->
-    <!--app:layout_constraintEnd_toEndOf="parent"-->
-    <!--app:layout_constraintStart_toStartOf="parent"-->
-    <!--app:layout_constraintTop_toBottomOf="@+id/editText9" />-->
 
 </android.support.constraint.ConstraintLayout>
