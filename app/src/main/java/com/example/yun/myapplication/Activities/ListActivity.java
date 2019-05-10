@@ -2,6 +2,7 @@ package com.example.yun.myapplication.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -98,16 +99,9 @@ public class ListActivity extends AppCompatActivity {
                 intent.putExtra("position", mMedicList.get(position).getId());
                 startActivity(intent);
             }
-
-            @Override
             public void onFavoriteClick(int position) {
                 removeItem(position);
             }
-        });
-
-        findViewById(R.id.listContinueButton).setOnClickListener(v -> {
-            Intent intent = new Intent(ListActivity.this, SingInActivity.class);
-            startActivity(intent);
         });
     }
 
@@ -127,25 +121,17 @@ public class ListActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.map) {
             Toast.makeText(getApplicationContext(), "Logout user!", Toast.LENGTH_LONG).show();
             return true;
         }
 
-        // user is in notifications fragment
-        // and selected 'Mark all as Read'
         if (id == R.id.List) {
             Toast.makeText(getApplicationContext(), "All notifications marked as read!", Toast.LENGTH_LONG).show();
         }
 
-        // user is in notifications fragment
-        // and selected 'Clear All'
         if (id == R.id.Profile) {
             Toast.makeText(getApplicationContext(), "Clear all notifications!", Toast.LENGTH_LONG).show();
         }
@@ -161,32 +147,35 @@ public class ListActivity extends AppCompatActivity {
         //Setting Navigation View Item Selected Listener to handle the item click of the navigation menu
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
+
             // This method will trigger on item Click of navigation menu
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
 
                 //Check to see which item was being clicked and perform appropriate action
                 switch (menuItem.getItemId()) {
-                    //Replacing the main content with ContentFragment Which is our Inbox View;
                     case R.id.List:
-                        navItemIndex = 0;
+                        mDrawerLayout.closeDrawers();
                         break;
                     case R.id.Profile:
-                        navItemIndex = 1;
+                        mDrawerLayout.closeDrawers();
+                        startActivity(new Intent(ListActivity.this, SplashActivity.class));
                         break;
                     case R.id.favourites:
-                        navItemIndex = 2;
+                        mDrawerLayout.closeDrawers();
+                        startActivity(new Intent(ListActivity.this, SplashActivity.class));
                         break;
                     case R.id.premium:
-                        navItemIndex = 3;
+                        mDrawerLayout.closeDrawers();
+                        startActivity(new Intent(ListActivity.this, SplashActivity.class));
                         break;
                     case R.id.map:
-                        startActivity(new Intent(ListActivity.this, MapActivity.class));
                         mDrawerLayout.closeDrawers();
+                        startActivity(new Intent(ListActivity.this, SplashActivity.class));
                         return true;
                     case R.id.settings:
-//                        startActivity(new Intent(ListActivity.this, AboutUsActivity.class));
                         mDrawerLayout.closeDrawers();
+                        startActivity(new Intent(ListActivity.this, SplashActivity.class));
                         return true;
                     case R.id.signIn:
                         startActivity(new Intent(ListActivity.this, SingInActivity.class));
@@ -195,11 +184,31 @@ public class ListActivity extends AppCompatActivity {
                     default:
                         navItemIndex = 0;
                 }
-
-
                 return true;
             }
         });
-
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        NetworkService.getInstance()
+                .getJSONApi()
+                .getAllPosts()
+                .enqueue(new Callback<List<Medic>>() {
+                    @Override
+                    public void onResponse(@NonNull Call<List<Medic>> call, @NonNull Response<List<Medic>> response) {
+                        mMedicList = response.body();
+                        buildRecyclerView();
+                    }
+
+                    @Override
+                    public void onFailure(@NonNull Call<List<Medic>> call, @NonNull Throwable t) {
+                        t.printStackTrace();
+                    }
+                });
+    }
+
+
+
 }
