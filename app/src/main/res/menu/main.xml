@@ -1,10 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".Activities.MainActivity" >
 
-    <item android:id="@+id/action_refresh"
-        android:title="@string/action_refresh"
-        android:orderInCategory="100"
-        app:showAsAction="never" />
+    <item android:id="@+id/List" android:title="Medics list" android:icon="@drawable/ic_launcher_list"/>
+    <item android:id="@+id/Profile" android:title="My profile" android:icon="@drawable/map"/>
+    <item android:id="@+id/favourites" android:title="My favourites" android:icon="@drawable/ic_launcher_favourites"/>
+    <item android:id="@+id/premium" android:title="Buy premium" />
+    <item android:id="@+id/map" android:title="Map" android:icon="@drawable/map"/>
+    <item android:id="@+id/settings" android:title="Settings"/>
+    <item android:id="@+id/signIn" android:title="Sign in"/>
+
+
 </menu>

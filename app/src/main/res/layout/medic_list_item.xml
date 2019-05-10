@@ -11,6 +11,16 @@
         android:layout_height="match_parent"
         android:layout_margin="4dp">
 
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="211dp"
+            android:layout_height="32dp"
+            android:layout_below="@+id/textView"
+            android:layout_marginTop="-3dp"
+            android:layout_marginEnd="-58dp"
+            android:layout_toStartOf="@+id/imageView"
+            app:srcCompat="@drawable/demo_indicator" />
+
         <TextView
             android:id="@+id/textView"
             android:layout_width="188dp"
@@ -20,8 +30,10 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="6dp"
             android:layout_toStartOf="@+id/imageView"
+            android:fontFamily="@font/montserrat"
             android:text="Line 1"
             android:textAlignment="textEnd"
+            android:textAllCaps="true"
             android:textColor="@android:color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -48,7 +60,8 @@
             android:layout_toStartOf="@+id/imageView"
             android:text="Line 2"
             android:textAlignment="textEnd"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:textStyle="italic" />
 
         <ImageView
             android:id="@+id/image_favorite"
@@ -67,7 +80,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="8dp"
             android:padding="2dp"
-            app:srcCompat="@drawable/ic_editprofile_avatar" />
+            app:srcCompat="@drawable/ic_medprofile_avatar" />
 
     </RelativeLayout>
 

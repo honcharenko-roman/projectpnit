@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:background="@drawable/digital_health_recruitment"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="98dp"
+        android:layout_height="80dp"
+        android:src="@drawable/ic_medprofile_avatar" />
+
+    <TextView
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Admin Admin"
+        android:textColor="#3F51B5"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="157dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/montserrat"
+        android:text="admin@gmail.com"
+        android:textColor="#3F51B5" />
+</LinearLayout>

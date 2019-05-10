@@ -3,9 +3,15 @@ package com.example.yun.myapplication.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.ToggleButton;
 
 import com.example.yun.myapplication.Entities.Medic;
 import com.example.yun.myapplication.R;
@@ -26,10 +32,26 @@ public class ListActivity extends AppCompatActivity {
     private MedicAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
+    private DrawerLayout mDrawerLayout;
+    private Button mToggle;
+
+    private NavigationView mNavigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+
+        mNavigationView = findViewById(R.id.navViewList);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.listActivity);
+        mToggle = findViewById(R.id.toggleButton);
+
+        mToggle.setOnClickListener(v -> {
+            mDrawerLayout.openDrawer(mNavigationView);
+        });
+
+
+
         mMedicList = null;
 
         NetworkService.getInstance()
@@ -48,6 +70,15 @@ public class ListActivity extends AppCompatActivity {
                     }
                 });
     }
+
+
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        if (mToggleButton.isActivated()){
+//            return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
     /*public void insertItem(int position) {
         mMedicList.add(position, new Medic(R.drawable.ic_android, "New Item At Position" + position, "This is Line 2"));
