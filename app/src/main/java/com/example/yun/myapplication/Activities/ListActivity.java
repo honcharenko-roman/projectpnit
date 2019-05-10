@@ -100,7 +100,7 @@ public class ListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
             public void onFavoriteClick(int position) {
-                removeItem(position);
+                mMedicList.get(position).setFavorite(true);
             }
         });
     }
