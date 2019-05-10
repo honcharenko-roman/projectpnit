@@ -28,6 +28,7 @@ public class MedicAdapter extends RecyclerView.Adapter<MedicAdapter.MedicViewHol
     }
 
     public static class MedicViewHolder extends RecyclerView.ViewHolder {
+
         public ImageView mImageView;
         public TextView mTextView1;
         public TextView mTextView2;
@@ -61,7 +62,14 @@ public class MedicAdapter extends RecyclerView.Adapter<MedicAdapter.MedicViewHol
                         int position = getAdapterPosition();
                         if (position != RecyclerView.NO_POSITION) {
                             listener.onFavoriteClick(position);
-                            mImageFavorite.setImageResource(R.drawable.ic_favorite_filled);
+                            if (mImageFavorite.getDrawable().getConstantState() ==
+                                    itemView.getResources().getDrawable( R.drawable.ic_favorite_filled).getConstantState()){
+                                mImageFavorite.setImageResource(R.drawable.ic_favorite_blank);
+                            }
+                            else {
+                                mImageFavorite.setImageResource(R.drawable.ic_favorite_filled);
+                            }
+
                         }
                     }
                 }
@@ -87,9 +95,8 @@ public class MedicAdapter extends RecyclerView.Adapter<MedicAdapter.MedicViewHol
         if (currentItem.isFavorite()){
             holder.mImageFavorite.setImageResource(R.drawable.ic_favorite_filled);
         }
-        else {
+        else
             holder.mImageFavorite.setImageResource(R.drawable.ic_favorite_blank);
-        }
 
         //аватар
         //holder.mImageView.setImageResource(currentItem.getImageResource());

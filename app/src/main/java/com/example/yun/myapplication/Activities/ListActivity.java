@@ -1,5 +1,6 @@
 package com.example.yun.myapplication.Activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -24,6 +25,7 @@ import com.example.yun.myapplication.RecyclerViewAdapters.MedicAdapter;
 import com.example.yun.myapplication.Retrofit.NetworkService;
 
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -43,6 +45,8 @@ public class ListActivity extends AppCompatActivity {
     public static int navItemIndex = 0;
 
     private NavigationView mNavigationView;
+
+    private boolean isFavorite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,14 +104,38 @@ public class ListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(int position) {
                 Intent intent = new Intent(ListActivity.this, MedProfileActivity.class);
-                intent.putExtra("position", mMedicList.get(position).getId());
-                startActivity(intent);
+                Bundle extras = new Bundle();
+                extras.putLong("id", mMedicList.get(position).getId());
+                extras.putInt("position", position);
+                extras.putBoolean("isFavorite", mMedicList.get(position).isFavorite());
+                intent.putExtras(extras);
+                startActivityForResult(intent, 1);
             }
+
             public void onFavoriteClick(int position) {
-                mMedicList.get(position).setFavorite(true);
+                if (mMedicList.get(position).isFavorite()) {
+                    mMedicList.get(position).setFavorite(false);
+                } else {
+                    mMedicList.get(position).setFavorite(true);
+                }
             }
         });
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 1) {
+            if(resultCode == Activity.RESULT_OK){
+                int result = data.getIntExtra("position",0);
+                boolean result2 = data.getBooleanExtra("isFavorite",false);
+                mMedicList.get(result).setFavorite(result2);
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                //Write your code if there's no result
+            }
+        }
+    }//onActivityResult
 
     @Override
     public void onBackPressed() {
