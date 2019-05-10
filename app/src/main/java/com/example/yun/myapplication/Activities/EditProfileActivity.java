@@ -41,7 +41,8 @@ public class EditProfileActivity extends AppCompatActivity {
                     addressField.getText().toString(),
                     infoField.getText().toString(),
                     true,
-                    null
+                    null,
+                    false
             );
             Call<Medic> call = NetworkService.getInstance().getJSONApi().postMedic(medic);
             call.enqueue(new Callback<Medic>() {
