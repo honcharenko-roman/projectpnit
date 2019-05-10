@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.example.yun.myapplication.Entities.Medic;
 import com.example.yun.myapplication.R;
@@ -30,6 +32,9 @@ public class EditProfileActivity extends AppCompatActivity {
         EditText experienceField  = findViewById(R.id.editProfileExperienceField);
         EditText telephoneField  = findViewById(R.id.editProfilePhoneNumberField);
 
+        Spinner mySpinner = (Spinner) findViewById(R.id.spinner);
+        mySpinner.setAdapter(new ArrayAdapter<YELL.main.domain.Categories>(this, android.R.layout.simple_spinner_item, YELL.main.domain.Categories.values()));
+
         findViewById(R.id.sendButton).setOnClickListener(v->{
 
             medic = new Medic(
@@ -42,7 +47,7 @@ public class EditProfileActivity extends AppCompatActivity {
                     addressField.getText().toString(),
                     infoField.getText().toString(),
                     true,
-                    null,
+                    mySpinner.getSelectedItem().toString(),
                     false
             );
             Call<Medic> call = NetworkService.getInstance().getJSONApi().postMedic(medic);

@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/whitePanelDoctor"
+        android:id="@+id/redPanel"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
@@ -14,11 +14,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/whitePanelPatient"
+        app:layout_constraintTop_toTopOf="@+id/whitePanelDoctor"
         app:srcCompat="@drawable/bottom_pannel" />
 
     <ImageView
-        android:id="@+id/whitePanelPatient"
+        android:id="@+id/whitePanelDoctor"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
@@ -39,7 +39,7 @@
         app:layout_constraintGuide_percent="0.5" />
 
     <ImageView
-        android:id="@+id/imageView11"
+        android:id="@+id/whitePanelClient"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="fitXY"
@@ -66,9 +66,9 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        app:layout_constraintEnd_toEndOf="@+id/whitePanelDoctor"
-        app:layout_constraintStart_toStartOf="@+id/imageView11"
-        app:layout_constraintTop_toTopOf="@+id/imageView11"
+        app:layout_constraintEnd_toEndOf="@+id/whitePanelClient"
+        app:layout_constraintStart_toStartOf="@+id/whitePanelClient"
+        app:layout_constraintTop_toTopOf="@+id/whitePanelClient"
         app:srcCompat="@drawable/ic_docorclient_client_logo" />
 
     <TextView
@@ -124,10 +124,10 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/whitePanelPatient"
-        app:layout_constraintEnd_toEndOf="@+id/whitePanelPatient"
+        app:layout_constraintBottom_toBottomOf="@+id/whitePanelDoctor"
+        app:layout_constraintEnd_toEndOf="@+id/whitePanelDoctor"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/whitePanelPatient"
+        app:layout_constraintStart_toStartOf="@+id/whitePanelDoctor"
         app:layout_constraintTop_toBottomOf="@+id/docOrClient_top_panel"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/ic_doctorclient_doctor_logo" />

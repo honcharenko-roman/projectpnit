@@ -7,18 +7,12 @@
     android:layout_height="match_parent"
     tools:context="com.example.yun.myapplication.Activities.ListActivity">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="115dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="0dp"
-        android:background="#FFFFFF"
-        android:padding="4dp"
-        android:scrollbars="vertical">
-
-    </android.support.v7.widget.RecyclerView>
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/error404" />
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -40,9 +34,9 @@
             android:layout_height="71dp"
             android:fontFamily="@font/montserrat"
             android:gravity="center"
-            android:text="Medics"
+            android:text="Unavailable"
             android:textColor="#FFFFFF"
-            android:textSize="50sp"
+            android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/top_panel"
             app:layout_constraintEnd_toEndOf="parent"

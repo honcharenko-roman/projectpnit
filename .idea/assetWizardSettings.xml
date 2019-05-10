@@ -29,11 +29,24 @@
                                           </PersistentState>
                                         </value>
                                       </entry>
+                                      <entry key="image">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="color" value="000000" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
                                     </map>
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="theme" value="HOLO_DARK" />
+                                      <entry key="assetType" value="IMAGE" />
+                                      <entry key="imageAsset" value="D:\Desktop\Very-Basic-Settings-icon.png" />
+                                      <entry key="outputName" value="ic_settings" />
                                       <entry key="themeColor" value="ffffff" />
                                     </map>
                                   </option>
@@ -184,11 +197,11 @@
                           <map>
                             <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="be0e00" />
-                            <entry key="height" value="1024" />
+                            <entry key="height" value="479" />
                             <entry key="outputName" value="ic_settings" />
                             <entry key="overrideSize" value="true" />
                             <entry key="sourceFile" value="D:\Desktop\settings.svg" />
-                            <entry key="width" value="1024" />
+                            <entry key="width" value="479" />
                           </map>
                         </option>
                       </PersistentState>
