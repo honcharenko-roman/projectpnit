@@ -5,12 +5,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".Activities.MainActivity" >
 
-    <item android:id="@+id/List" android:title="Medics list" android:icon="@drawable/ic_launcher_list"/>
+
+    <item
+        android:id="@+id/List"
+        android:enabled="true"
+        android:icon="@drawable/ic_mr_button_connecting_21_light"
+        android:title="Medics list" />
     <item android:id="@+id/Profile" android:title="My profile" android:icon="@drawable/map"/>
     <item android:id="@+id/favourites" android:title="My favourites" android:icon="@drawable/ic_launcher_favourites"/>
-    <item android:id="@+id/premium" android:title="Buy premium" />
+    <item android:id="@+id/premium" android:title="Buy premium" android:icon="@drawable/ic_settings"/>
     <item android:id="@+id/map" android:title="Map" android:icon="@drawable/map"/>
-    <item android:id="@+id/settings" android:title="Settings"/>
+    <item android:id="@+id/settings" android:title="Settings" android:icon="@drawable/ic_settings"/>
     <item android:id="@+id/signIn" android:title="Sign in"/>
 
 

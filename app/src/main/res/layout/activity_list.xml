@@ -67,18 +67,18 @@
 
         <Button
             android:id="@+id/toggleButton"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="74dp"
+            android:layout_height="77dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="8dp"
             android:background="#00FFFFFF"
-            android:foreground="@drawable/ic_list"
+            android:foreground="@drawable/ic_launcher_list"
             android:textOff="  "
             android:textOn=" "
             android:visibility="visible"
             app:layout_constraintEnd_toStartOf="@+id/guideline6"
-            app:layout_constraintHorizontal_bias="0.059"
+            app:layout_constraintHorizontal_bias="0.068"
             app:layout_constraintStart_toStartOf="@+id/MedicsText"
             app:layout_constraintTop_toTopOf="parent" />
 
