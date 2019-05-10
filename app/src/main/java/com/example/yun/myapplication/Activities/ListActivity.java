@@ -171,7 +171,7 @@ public class ListActivity extends AppCompatActivity {
                         break;
                     case R.id.Profile:
                         mDrawerLayout.closeDrawers();
-                        startActivity(new Intent(ListActivity.this, MapActivity.class));
+                        startActivity(new Intent(ListActivity.this, error404Activity.class));
                         break;
                     case R.id.favourites:
                         mDrawerLayout.closeDrawers();

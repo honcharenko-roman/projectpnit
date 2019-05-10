@@ -3,6 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="160dp"
+    android:id="@+id/navHeader"
     android:background="@drawable/digital_health_recruitment"
     android:orientation="vertical">
 
@@ -12,6 +13,7 @@
         android:src="@drawable/ic_medprofile_avatar" />
 
     <TextView
+        android:id="@+id/navHeaderName"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
