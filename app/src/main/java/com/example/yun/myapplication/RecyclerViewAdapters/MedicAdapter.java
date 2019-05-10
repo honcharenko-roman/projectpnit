@@ -31,6 +31,7 @@ public class MedicAdapter extends RecyclerView.Adapter<MedicAdapter.MedicViewHol
         public ImageView mImageView;
         public TextView mTextView1;
         public TextView mTextView2;
+        public TextView mTextView3;
         public ImageView mImageFavorite;
 
         public MedicViewHolder(View itemView, final OnItemClickListener listener) {
@@ -38,6 +39,7 @@ public class MedicAdapter extends RecyclerView.Adapter<MedicAdapter.MedicViewHol
             mImageView = itemView.findViewById(R.id.imageView);
             mTextView1 = itemView.findViewById(R.id.textView);
             mTextView2 = itemView.findViewById(R.id.textView2);
+            mTextView3 = itemView.findViewById(R.id.textView3);
             mImageFavorite = itemView.findViewById(R.id.image_favorite);
 
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +61,7 @@ public class MedicAdapter extends RecyclerView.Adapter<MedicAdapter.MedicViewHol
                         int position = getAdapterPosition();
                         if (position != RecyclerView.NO_POSITION) {
                             listener.onFavoriteClick(position);
+                            mImageFavorite.setImageResource(R.drawable.ic_favorite_filled);
                         }
                     }
                 }
@@ -81,10 +84,19 @@ public class MedicAdapter extends RecyclerView.Adapter<MedicAdapter.MedicViewHol
     public void onBindViewHolder(MedicViewHolder holder, int position) {
         Medic currentItem = mMedicList.get(position);
 
+        if (currentItem.isFavorite()){
+            holder.mImageFavorite.setImageResource(R.drawable.ic_favorite_filled);
+        }
+        else {
+            holder.mImageFavorite.setImageResource(R.drawable.ic_favorite_blank);
+        }
+
+        //аватар
         //holder.mImageView.setImageResource(currentItem.getImageResource());
-//        holder.mTextView1.setText(currentItem.getSurname());
-        holder.mTextView1.setText(" " + currentItem.getName());
-//        holder.mTextView2.setText(currentItem.getCategory());
+        String nameSurname = currentItem.getName()+" "+currentItem.getSurname();
+        holder.mTextView1.setText(nameSurname);
+        holder.mTextView2.setText(currentItem.getCategory());
+        holder.mTextView3.setText(currentItem.getAdress());
     }
 
     @Override

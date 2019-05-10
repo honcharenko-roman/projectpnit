@@ -20,7 +20,9 @@ public class MedProfileActivity extends AppCompatActivity {
 
     ImageView avatar;
     TextView name;
+    TextView surname;
     TextView category;
+    TextView about;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,8 +30,10 @@ public class MedProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_med);
 
-        name = findViewById(R.id.name);
-        category = findViewById(R.id.textcategory);
+        name = findViewById(R.id.medProfileName);
+        category = findViewById(R.id.medProfileCategory);
+        about = findViewById(R.id.medProfileAbout);
+
 
         Intent mIntent = getIntent();
         long medicId = mIntent.getLongExtra("position", 0);
@@ -42,9 +46,10 @@ public class MedProfileActivity extends AppCompatActivity {
                     public void onResponse(@NonNull Call<Medic> call, @NonNull Response<Medic> response) {
                         if (response.body() != null) {
                             Medic medic = response.body();
-//                            name.setText(medic.getSurname());
-                            name.append(" " + medic.getName());
-//                            category.setText(medic.getCategory());
+                            name.setText(medic.getName());
+                            name.append(" " + medic.getSurname());
+                            about.setText(medic.getInfo());
+                            category.setText(medic.getCategory());
                         }
                     }
 

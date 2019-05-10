@@ -210,10 +210,11 @@ public class Medic {
     String info;
     Boolean verification;
     String category;
+    boolean isFavorite;
     List<Comment> comments = new ArrayList<>();
 
 
-    public Medic(String name, String surname, String telephone, String email, Integer experience, String password, String adress, String info, Boolean verification, String category) {
+    public Medic(String name, String surname, String telephone, String email, Integer experience, String password, String adress, String info, Boolean verification, String category, boolean isFavorite) {
         this.id = null;
         this.name = name;
         this.surname = surname;
@@ -226,6 +227,15 @@ public class Medic {
         this.verification = verification;
         this.category = category;
         comments = null;
+        this.isFavorite = isFavorite;
+    }
+
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
     }
 
     public Long getId() {

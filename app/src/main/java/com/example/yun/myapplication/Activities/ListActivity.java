@@ -109,25 +109,6 @@ public class ListActivity extends AppCompatActivity {
             startActivity(intent);
         });*/
 
-
-        findViewById(R.id.listClearDataBaseButton).setOnClickListener(v->{
-            NetworkService
-                    .getInstance()
-                    .getJSONApi()
-                    .deleteMedics()
-                    .enqueue(new Callback<Medic>() {
-                        @Override
-                        public void onResponse(Call<Medic> call, Response<Medic> response) {
-
-                        }
-
-                        @Override
-                        public void onFailure(Call<Medic> call, Throwable t) {
-
-                        }
-                    });
-        });
-
         mAdapter.setOnItemClickListener(new MedicAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
@@ -138,7 +119,7 @@ public class ListActivity extends AppCompatActivity {
 
             @Override
             public void onFavoriteClick(int position) {
-                removeItem(position);
+                mMedicList.get(position).setFavorite(true);
             }
         });
 
