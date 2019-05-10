@@ -11,6 +11,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
@@ -46,6 +47,9 @@ public class ListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+//        handler.post(runnableCode);
+
         setContentView(R.layout.activity_list);
 
         mNavigationView = findViewById(R.id.navViewList);
@@ -192,23 +196,5 @@ public class ListActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        NetworkService.getInstance()
-                .getJSONApi()
-                .getAllPosts()
-                .enqueue(new Callback<List<Medic>>() {
-                    @Override
-                    public void onResponse(@NonNull Call<List<Medic>> call, @NonNull Response<List<Medic>> response) {
-                        mMedicList = response.body();
-                        buildRecyclerView();
-                    }
-
-                    @Override
-                    public void onFailure(@NonNull Call<List<Medic>> call, @NonNull Throwable t) {
-                        t.printStackTrace();
-                    }
-                });
     }
-
-
-
 }

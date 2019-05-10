@@ -1,5 +1,6 @@
 package com.example.yun.myapplication.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -56,6 +57,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
                 }
             });
+            startActivity(new Intent(this, ListActivity.class));
         });
     }
 }
