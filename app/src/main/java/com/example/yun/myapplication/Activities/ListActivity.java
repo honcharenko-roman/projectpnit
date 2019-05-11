@@ -2,9 +2,11 @@ package com.example.yun.myapplication.Activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -12,10 +14,17 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -24,8 +33,11 @@ import com.example.yun.myapplication.R;
 import com.example.yun.myapplication.RecyclerViewAdapters.MedicAdapter;
 import com.example.yun.myapplication.Retrofit.NetworkService;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Stream;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -46,10 +58,15 @@ public class ListActivity extends AppCompatActivity {
 
     private NavigationView mNavigationView;
 
+    private ArrayList categoryValues = new ArrayList<String>();
+
     private boolean isFavorite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        categoryValues.add("");
+        categoryValues.addAll(Arrays.asList(YELL.main.domain.Categories.values()));
         super.onCreate(savedInstanceState);
 
 //        handler.post(runnableCode);
@@ -84,8 +101,85 @@ public class ListActivity extends AppCompatActivity {
                     }
                 });
 
+        EditText cityFilter = findViewById(R.id.listCityFilter);
+        EditText nameFilter = findViewById(R.id.listNameFilter);
+        Spinner mySpinner = (Spinner) findViewById(R.id.spinner2);
+        mySpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categoryValues));
+
+        mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                filter(nameFilter.getText().toString(), cityFilter.getText().toString(), mySpinner.getSelectedItem().toString());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        cityFilter.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(nameFilter.getText().toString(), s.toString(), mySpinner.getSelectedItem().toString());
+            }
+        });
+        nameFilter.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString(), cityFilter.getText().toString(), mySpinner.getSelectedItem().toString());
+            }
+        });
+
     }
 
+    private void filter(String name, String city, String category) {
+        ArrayList<Medic> filteredList = new ArrayList<>();
+
+        if (mMedicList != null) {
+            for (Medic medic : mMedicList) {
+
+                String nameSurname = medic.getName().concat(" " + medic.getSurname());
+                String surnameName = medic.getSurname().concat(" " + medic.getName());
+
+                boolean isNameSurnameMatches = Objects.requireNonNull(nameSurname).toLowerCase().startsWith(name.toLowerCase());
+                boolean isSurnameNameMatches = Objects.requireNonNull(surnameName).toLowerCase().startsWith(name.toLowerCase());
+                boolean isCityMatches = Objects.requireNonNull(medic.getAdress()).toLowerCase().startsWith(city);
+
+                if (isCityMatches) {
+                    if ((isNameSurnameMatches) || (isSurnameNameMatches)) {
+                        if ((Objects.requireNonNull(category).toLowerCase()
+                                .compareTo(Objects.requireNonNull(medic.getCategory()).toLowerCase()) == 0)
+                        || (category.compareTo("") == 0)){
+                            filteredList.add(medic);
+                            mAdapter.filterList(filteredList);
+                        }
+                    }
+                }
+            }
+            if (filteredList.isEmpty()) {
+                mAdapter.filterList(filteredList);
+            }
+        }
+    }
 
     public void removeItem(int position) {
         mMedicList.remove(position);
@@ -126,9 +220,9 @@ public class ListActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (requestCode == 1) {
-            if(resultCode == Activity.RESULT_OK){
-                int result = data.getIntExtra("position",0);
-                boolean result2 = data.getBooleanExtra("isFavorite",false);
+            if (resultCode == Activity.RESULT_OK) {
+                int result = data.getIntExtra("position", 0);
+                boolean result2 = data.getBooleanExtra("isFavorite", false);
                 mMedicList.get(result).setFavorite(result2);
             }
             if (resultCode == Activity.RESULT_CANCELED) {
