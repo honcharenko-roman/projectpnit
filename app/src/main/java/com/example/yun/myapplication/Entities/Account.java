@@ -18,7 +18,13 @@ public class Account {
     private String password;
     private String info;
     private String address;
+    private boolean isLoggedIn;
+
     //private Set<AccountMedic> favourites = new HashSet<>();
+
+
+    public Account() {
+    }
 
     public Account(String name, String surname, String telephone, String eMail, String password, String info, String address) {
         this.id = null;
@@ -93,5 +99,13 @@ public class Account {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public boolean isLoggedIn() {
+        return isLoggedIn;
+    }
+
+    public void setLoggedIn(boolean loggedIn) {
+        isLoggedIn = loggedIn;
     }
 }

@@ -15,14 +15,19 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.example.yun.myapplication.Entities.Medic;
+import com.example.yun.myapplication.LocalDb.LoggedUser;
 import com.example.yun.myapplication.R;
 import com.example.yun.myapplication.RecyclerViewAdapters.MedicAdapter;
 import com.example.yun.myapplication.Retrofit.NetworkService;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 import java.util.Objects;
@@ -41,7 +46,9 @@ public class ListActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
     private Button mToggle;
-
+    TextView mNameText;
+    TextView mEmailText;
+    View mHeaderView;
     public static int navItemIndex = 0;
 
     private NavigationView mNavigationView;
@@ -52,13 +59,27 @@ public class ListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        handler.post(runnableCode);
-
         setContentView(R.layout.activity_list);
 
         mNavigationView = findViewById(R.id.navViewList);
+        mHeaderView = mNavigationView.getHeaderView(0);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.listActivity);
         mToggle = findViewById(R.id.toggleButton);
+
+        mNameText = mHeaderView.findViewById(R.id.navHeaderName);
+        mEmailText = mHeaderView.findViewById(R.id.navHeaderEmail);
+
+
+
+        if(LoggedUser.getInstance().isLoggedIn()==true){
+            mNavigationView.getMenu().getItem(6).setVisible(false);
+            mNavigationView.getMenu().getItem(7).setVisible(true);
+            mNameText.setText(LoggedUser.getInstance().getName());
+            mEmailText.setText(LoggedUser.getInstance().getEmail());
+        } else {
+            mNavigationView.getMenu().getItem(6).setVisible(true);
+            mNavigationView.getMenu().getItem(7).setVisible(false);
+        }
 
         mToggle.setOnClickListener(v -> {
             mDrawerLayout.openDrawer(mNavigationView);
@@ -84,12 +105,7 @@ public class ListActivity extends AppCompatActivity {
                     }
                 });
 
-    }
 
-
-    public void removeItem(int position) {
-        mMedicList.remove(position);
-        mAdapter.notifyItemRemoved(position);
     }
 
     public void buildRecyclerView() {
@@ -151,13 +167,10 @@ public class ListActivity extends AppCompatActivity {
         return true;
     }
 
-    private void selectNavMenu() {
-        mNavigationView.getMenu().getItem(1).setChecked(true);
-    }
-
     private void setUpNavigationView() {
         //Setting Navigation View Item Selected Listener to handle the item click of the navigation menu
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
 
 
             // This method will trigger on item Click of navigation menu
@@ -193,6 +206,12 @@ public class ListActivity extends AppCompatActivity {
                         startActivity(new Intent(ListActivity.this, SingInActivity.class));
                         mDrawerLayout.closeDrawers();
                         return true;
+                    case R.id.logOut:
+                        LoggedUser.getInstance().setLoggedIn(false);
+                        startActivity(new Intent(ListActivity.this, ListActivity.class));
+                        mDrawerLayout.closeDrawers();
+                        return true;
+
                     default:
                         navItemIndex = 0;
                 }
