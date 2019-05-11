@@ -1,22 +1,17 @@
 package com.example.yun.myapplication.Activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.example.yun.myapplication.Entities.Medic;
 import com.example.yun.myapplication.R;
 import com.example.yun.myapplication.Retrofit.NetworkService;
-
-import org.w3c.dom.Text;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,12 +26,12 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
-        EditText nameField  = findViewById(R.id.editProfileNameField);
-        EditText surnameField  = findViewById(R.id.editProfileSurnameField);
-        EditText addressField  = findViewById(R.id.editProfileAddressField);
-        EditText infoField  = findViewById(R.id.editProfileInformationField);
+        EditText nameField  = findViewById(R.id.editClientProfileNameField);
+        EditText surnameField  = findViewById(R.id.editClientProfileSurnameField);
+        EditText addressField  = findViewById(R.id.editClientProfileAddressField);
+        EditText infoField  = findViewById(R.id.editClientProfileInformationField);
         EditText experienceField  = findViewById(R.id.editProfileExperienceField);
-        EditText telephoneField  = findViewById(R.id.editProfilePhoneNumberField);
+        EditText telephoneField  = findViewById(R.id.editClientProfilePhoneNumberField);
 
         Spinner mySpinner = (Spinner) findViewById(R.id.spinner);
         mySpinner.setAdapter(new ArrayAdapter<YELL.main.domain.Categories>(this, android.R.layout.simple_spinner_item, YELL.main.domain.Categories.values()));

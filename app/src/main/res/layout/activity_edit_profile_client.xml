@@ -6,277 +6,245 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/editClientProfileBottomImage"
-        android:layout_width="0dp"
-        android:layout_height="65dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_bottom_panel" />
-
-    <TextView
-        android:id="@+id/editClientProfileSendButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:fontFamily="@font/montserrat"
-        android:gravity="center"
-        android:text="Continue..."
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <ImageView
-        android:id="@+id/editClientProfileTopPanel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_signin_top_panel" />
-
-    <TextView
-        android:id="@+id/editClientProfileText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:fontFamily="@font/montserrat"
-        android:gravity="center"
-        android:text="Edit profile"
-        android:textColor="#FFFFFF"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/editClientProfileTopPanel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/constraintLayout3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/editClientProfileBottomImage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editClientProfileTopPanel">
-
-        <EditText
-            android:id="@+id/editClientProfileAddressField"
+        <ScrollView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:ems="10"
-            android:fontFamily="@font/montserrat"
-            android:hint="Address (city, street...)"
-            android:inputType="textPersonName"
-            android:textStyle="italic"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/bottom2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editClientProfileContactDetails" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/editClientProfileSurnameField"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="8dp"
-            android:ems="10"
-            android:fontFamily="@font/montserrat"
-            android:hint="Surname"
-            android:inputType="textPersonName"
-            android:textStyle="italic"
-            app:layout_constraintEnd_toStartOf="@+id/editClientProfileAvatar"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editClientProfileNameField" />
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/editClientProfileDateOfBirthText"
-            android:layout_width="0dp"
-            android:layout_height="31dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:fontFamily="@font/montserrat"
-            android:text="Date of birth"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline7"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editClientProfileSurnameField" />
+                <EditText
+                    android:id="@+id/editClientProfilePhoneNumberField"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="0dp"
+                    android:ems="10"
+                    android:hint="Phone number"
+                    android:inputType="phone"
+                    android:textStyle="italic"
+                    app:layout_constraintBottom_toTopOf="@+id/editClientProfileInformationField"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <ImageView
+                    android:id="@+id/editProfileAvatar"
+                    android:layout_width="167dp"
+                    android:layout_height="145dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline4"
+                    app:layout_constraintTop_toBottomOf="@+id/editProfileTopPanel"
+                    app:srcCompat="@drawable/ic_medprofile_avatar" />
+
+                <EditText
+                    android:id="@+id/editClientProfileDateOfBirthField"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="4dp"
+                    android:ems="10"
+                    android:inputType="date"
+                    android:textStyle="italic"
+                    app:layout_constraintBottom_toTopOf="@+id/editProfileContactDetails"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <ImageView
+                    android:id="@+id/editProfileTopPanel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_signin_top_panel" />
+
+                <TextView
+                    android:id="@+id/editProfileDateOfBirthText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Date of birth"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toTopOf="@+id/editClientProfileDateOfBirthField"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editClientProfileSurnameField" />
+
+                <EditText
+                    android:id="@+id/editClientProfileAddressField"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="4dp"
+                    android:ems="10"
+                    android:fontFamily="@font/montserrat"
+                    android:hint="Address (city, street...)"
+                    android:inputType="textPersonName"
+                    android:textStyle="italic"
+                    app:layout_constraintBottom_toTopOf="@+id/editClientProfilePhoneNumberField"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <android.support.constraint.Guideline
+                    android:id="@+id/guideline4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5" />
+
+                <TextView
+                    android:id="@+id/editProfileText"
+                    android:layout_width="match_parent"
+                    android:layout_height="71dp"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:text="Edit profile"
+                    android:textColor="#FFFFFF"
+                    android:textSize="50sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/editProfileTopPanel"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/editProfileTopPanel"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/editClientProfileInformationField"
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:ems="10"
+                    android:fontFamily="@font/montserrat"
+                    android:hint="Additional information"
+                    android:textAlignment="gravity"
+                    android:textStyle="italic"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:inputType="textMultiLine" />
+
+                <TextView
+                    android:id="@+id/editProfileContactDetails"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="4dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Contact details"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toTopOf="@+id/editClientProfileAddressField"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <EditText
+                    android:id="@+id/editClientProfileSurnameField"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:ems="10"
+                    android:fontFamily="@font/montserrat"
+                    android:hint="Surname"
+                    android:inputType="textPersonName"
+                    android:textStyle="italic"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editProfileMiddlenameField" />
+
+                <EditText
+                    android:id="@+id/editProfileMiddlenameField"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:ems="10"
+                    android:fontFamily="@font/montserrat"
+                    android:hint="Middlename"
+                    android:inputType="textPersonName"
+                    android:textStyle="italic"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editClientProfileNameField" />
+
+                <EditText
+                    android:id="@+id/editClientProfileNameField"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:ems="10"
+                    android:fontFamily="@font/montserrat"
+                    android:hint="Name"
+                    android:inputType="textPersonName"
+                    android:textStyle="italic"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editProfileTopPanel" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="66dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/editProfileAvatar"
+                    app:layout_constraintEnd_toEndOf="@+id/editProfileAvatar"
+                    app:srcCompat="@drawable/ic_plus" />
+
+            </android.support.constraint.ConstraintLayout>
+        </ScrollView>
 
         <ImageView
-            android:id="@+id/editClientProfileAvatar"
+            android:id="@+id/bottom2"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/editClientProfileSurnameField"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline7"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_medprofile_avatar" />
-
-        <TextView
-            android:id="@+id/editClientProfileContactDetails"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:fontFamily="@font/montserrat"
-            android:text="Contact details"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editClientProfileDateOfBirthField" />
-
-        <EditText
-            android:id="@+id/editClientProfileNameField"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:ems="10"
-            android:fontFamily="@font/montserrat"
-            android:hint="Name"
-            android:inputType="textPersonName"
-            android:textStyle="italic"
-            app:layout_constraintEnd_toStartOf="@+id/editClientProfileAvatar"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.5" />
-
-        <EditText
-            android:id="@+id/editClientProfileDateOfBirthField"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:ems="10"
-            android:inputType="date"
-            android:textStyle="italic"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editClientProfileDateOfBirthText" />
-
-        <EditText
-            android:id="@+id/editClientProfileInformationField"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:ems="10"
-            android:fontFamily="@font/montserrat"
-            android:gravity="start"
-            android:hint="Additional information"
-            android:inputType="textPersonName"
-            android:textStyle="italic"
+            android:layout_height="65dp"
+            android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editClientProfilePhoneNumberField" />
+            app:srcCompat="@drawable/ic_bottom_panel" />
 
-        <EditText
-            android:id="@+id/editClientProfilePhoneNumberField"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:ems="10"
-            android:hint="Phone number"
-            android:inputType="phone"
-            android:textStyle="italic"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editClientProfileAddressField" />
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
-        <Button
-            android:id="@+id/editProfileClientChangeAvatar"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+        <TextView
+            android:id="@+id/sendButton"
+            android:layout_width="183dp"
+            android:layout_height="31dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="Change photo"
-            app:layout_constraintBottom_toBottomOf="@+id/editClientProfileDateOfBirthText"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/montserrat"
+            android:gravity="center"
+            android:text="Create profile"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintBottom_toBottomOf="@+id/bottom2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/editClientProfileDateOfBirthText"
-            app:layout_constraintTop_toBottomOf="@+id/editClientProfileAvatar" />
+            app:layout_constraintStart_toStartOf="@+id/guideline10" />
+
     </android.support.constraint.ConstraintLayout>
-
-    <!--<EditText-->
-    <!--android:id="@+id/editText11"-->
-    <!--android:layout_width="350dp"-->
-    <!--android:layout_height="40"-->
-    <!--android:layout_marginStart="8dp"-->
-    <!--android:layout_marginTop="3dp"-->
-    <!--android:layout_marginEnd="8dp"-->
-    <!--android:ems="10"-->
-    <!--android:hint="Location"-->
-    <!--android:inputType="textPersonName|text"-->
-    <!--app:layout_constraintEnd_toEndOf="parent"-->
-    <!--app:layout_constraintHorizontal_bias="0.511"-->
-    <!--app:layout_constraintStart_toStartOf="parent"-->
-    <!--app:layout_constraintTop_toBottomOf="@+id/forgotPasswordText3" />-->
-
-    <!--<EditText-->
-    <!--android:id="@+id/editText9"-->
-    <!--android:layout_width="350dp"-->
-    <!--android:layout_height="40"-->
-    <!--android:layout_marginStart="8dp"-->
-    <!--android:layout_marginEnd="8dp"-->
-    <!--android:ems="10"-->
-    <!--android:hint="Telephone number"-->
-    <!--android:inputType="phone"-->
-    <!--app:layout_constraintEnd_toEndOf="parent"-->
-    <!--app:layout_constraintHorizontal_bias="0.511"-->
-    <!--app:layout_constraintStart_toStartOf="parent"-->
-    <!--app:layout_constraintTop_toBottomOf="@+id/editText11" />-->
-
-    <!--<EditText-->
-    <!--android:id="@+id/editText10"-->
-    <!--android:layout_width="350dp"-->
-    <!--android:layout_height="40"-->
-    <!--android:layout_marginStart="8dp"-->
-    <!--android:layout_marginEnd="8dp"-->
-    <!--android:ems="10"-->
-    <!--android:hint="About yourself"-->
-    <!--android:inputType="textPersonName|text"-->
-    <!--app:layout_constraintEnd_toEndOf="parent"-->
-    <!--app:layout_constraintStart_toStartOf="parent"-->
-    <!--app:layout_constraintTop_toBottomOf="@+id/editText9" />-->
-
-</android.support.constraint.ConstraintLayout>

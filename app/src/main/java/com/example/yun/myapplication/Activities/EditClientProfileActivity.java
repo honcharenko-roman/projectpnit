@@ -1,6 +1,5 @@
 package com.example.yun.myapplication.Activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -8,7 +7,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.yun.myapplication.Entities.Account;
-import com.example.yun.myapplication.Entities.Medic;
 import com.example.yun.myapplication.R;
 import com.example.yun.myapplication.Retrofit.NetworkService;
 
@@ -29,7 +27,7 @@ public class EditClientProfileActivity extends AppCompatActivity {
         EditText infoField = findViewById(R.id.editClientProfileInformationField);
         EditText telephoneField = findViewById(R.id.editClientProfilePhoneNumberField);
 
-        findViewById(R.id.editClientProfileSendButton).setOnClickListener(v -> {
+        findViewById(R.id.sendButton).setOnClickListener(v -> {
 
             Account account = new Account(
                     nameField.getText().toString(),
@@ -41,8 +39,8 @@ public class EditClientProfileActivity extends AppCompatActivity {
                     addressField.getText().toString()
             );
 
-            TextView textView = findViewById(R.id.editClientProfileText);
-            textView.setText(nameField.getText());
+//            TextView textView = findViewById(R.id.editClientProfileText);
+//            textView.setText(nameField.getText());
 
             Call<Account> call = NetworkService
                     .getInstance().getJSONApi()
