@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.example.yun.myapplication.Entities.Medic;
 import com.example.yun.myapplication.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -110,4 +111,10 @@ public class MedicAdapter extends RecyclerView.Adapter<MedicAdapter.MedicViewHol
     public int getItemCount() {
         return mMedicList.size();
     }
+
+    public void filterList(ArrayList<Medic> filteredList){
+        mMedicList = filteredList;
+        notifyDataSetChanged();
+    }
 }
+
