@@ -46,6 +46,7 @@ public class MedProfileActivity extends AppCompatActivity {
         backButton = findViewById(R.id.medProfileBackButton);
 
 
+
         Intent mIntent = getIntent();
         Bundle extras = mIntent.getExtras();
         long medicId = Objects.requireNonNull(extras).getLong("id", 0);
@@ -83,6 +84,9 @@ public class MedProfileActivity extends AppCompatActivity {
                     }
                 });
 
+        backButton.setOnClickListener(v -> {
+            finish();
+        });
         favoriteButton.setOnClickListener(v -> {
             if (medic != null) {
                 drawIsFavoriteButton();

@@ -1,12 +1,15 @@
 package com.example.yun.myapplication.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.yun.myapplication.Entities.Account;
+import com.example.yun.myapplication.LocalDb.LoggedUser;
 import com.example.yun.myapplication.R;
 import com.example.yun.myapplication.Retrofit.NetworkService;
 
@@ -39,8 +42,10 @@ public class EditClientProfileActivity extends AppCompatActivity {
                     addressField.getText().toString()
             );
 
-//            TextView textView = findViewById(R.id.editClientProfileText);
-//            textView.setText(nameField.getText());
+            LoggedUser.getInstance().setName(account.getName());
+            LoggedUser.getInstance().setEmail(account.getName().toLowerCase().replace(" ", "") + account.getSurname() + "@gmail.com");
+            LoggedUser.getInstance().setLoggedIn(true);
+
 
             Call<Account> call = NetworkService
                     .getInstance().getJSONApi()
@@ -56,6 +61,7 @@ public class EditClientProfileActivity extends AppCompatActivity {
 
                 }
             });
+            startActivity(new Intent(this, ListActivity.class));
         });
     }
 }

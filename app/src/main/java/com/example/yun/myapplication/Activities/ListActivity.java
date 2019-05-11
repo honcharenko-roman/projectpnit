@@ -2,12 +2,12 @@ package com.example.yun.myapplication.Activities;
 
 import android.app.Activity;
 import android.content.Intent;
+
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -27,11 +27,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.example.yun.myapplication.Entities.Medic;
+import com.example.yun.myapplication.LocalDb.LoggedUser;
 import com.example.yun.myapplication.R;
 import com.example.yun.myapplication.RecyclerViewAdapters.MedicAdapter;
 import com.example.yun.myapplication.Retrofit.NetworkService;
@@ -40,7 +42,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Stream;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -56,7 +57,9 @@ public class ListActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
     private Button mToggle;
-
+    TextView mNameText;
+    TextView mEmailText;
+    View mHeaderView;
     public static int navItemIndex = 0;
 
     private NavigationView mNavigationView;
@@ -70,17 +73,30 @@ public class ListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         categoryValues.add("Выберите категорию");
-        //categoryValues.add("");
         categoryValues.addAll(Arrays.asList(YELL.main.domain.Categories.values()));
-        super.onCreate(savedInstanceState);
 
-//        handler.post(runnableCode);
+        super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_list);
 
         mNavigationView = findViewById(R.id.navViewList);
+        mHeaderView = mNavigationView.getHeaderView(0);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.listActivity);
         mToggle = findViewById(R.id.toggleButton);
+
+        mNameText = mHeaderView.findViewById(R.id.navHeaderName);
+        mEmailText = mHeaderView.findViewById(R.id.navHeaderEmail);
+
+
+        if (LoggedUser.getInstance().isLoggedIn() == true) {
+            mNavigationView.getMenu().getItem(6).setVisible(false);
+            mNavigationView.getMenu().getItem(7).setVisible(true);
+            mNameText.setText(LoggedUser.getInstance().getName());
+            mEmailText.setText(LoggedUser.getInstance().getEmail());
+        } else {
+            mNavigationView.getMenu().getItem(6).setVisible(true);
+            mNavigationView.getMenu().getItem(7).setVisible(false);
+        }
 
         mToggle.setOnClickListener(v -> {
             mDrawerLayout.openDrawer(mNavigationView);
@@ -128,7 +144,7 @@ public class ListActivity extends AppCompatActivity {
         mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 0){
+                if (position == 0) {
                     ((TextView) parent.getChildAt(0)).setTextColor(Color.GRAY);
                 }
                 filter(nameFilter.getText().toString(), cityFilter.getText().toString(), mySpinner.getSelectedItem().toString());
@@ -208,6 +224,7 @@ public class ListActivity extends AppCompatActivity {
         mAdapter.notifyItemRemoved(position);
     }
 
+
     public void buildRecyclerView() {
         mRecyclerView = findViewById(R.id.recyclerView);
         mLayoutManager = new LinearLayoutManager(this);
@@ -267,10 +284,6 @@ public class ListActivity extends AppCompatActivity {
         return true;
     }
 
-    private void selectNavMenu() {
-        mNavigationView.getMenu().getItem(1).setChecked(true);
-    }
-
     private void setUpNavigationView() {
         //Setting Navigation View Item Selected Listener to handle the item click of the navigation menu
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -309,6 +322,12 @@ public class ListActivity extends AppCompatActivity {
                         startActivity(new Intent(ListActivity.this, SingInActivity.class));
                         mDrawerLayout.closeDrawers();
                         return true;
+                    case R.id.logOut:
+                        LoggedUser.getInstance().setLoggedIn(false);
+                        startActivity(new Intent(ListActivity.this, ListActivity.class));
+                        mDrawerLayout.closeDrawers();
+                        return true;
+
                     default:
                         navItemIndex = 0;
                 }
