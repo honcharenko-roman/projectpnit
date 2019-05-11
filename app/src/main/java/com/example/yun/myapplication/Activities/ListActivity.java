@@ -2,6 +2,7 @@ package com.example.yun.myapplication.Activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,11 +21,13 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -58,14 +61,16 @@ public class ListActivity extends AppCompatActivity {
 
     private NavigationView mNavigationView;
 
-    private ArrayList categoryValues = new ArrayList<String>();
+    //!*($E^*)$
+    private List categoryValues = new ArrayList<String>();
 
     private boolean isFavorite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        categoryValues.add("");
+        categoryValues.add("Выберите категорию");
+        //categoryValues.add("");
         categoryValues.addAll(Arrays.asList(YELL.main.domain.Categories.values()));
         super.onCreate(savedInstanceState);
 
@@ -104,11 +109,28 @@ public class ListActivity extends AppCompatActivity {
         EditText cityFilter = findViewById(R.id.listCityFilter);
         EditText nameFilter = findViewById(R.id.listNameFilter);
         Spinner mySpinner = (Spinner) findViewById(R.id.spinner2);
-        mySpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categoryValues));
+        mySpinner.setAdapter(new ArrayAdapter<List<String>>(this, android.R.layout.simple_spinner_item, categoryValues) {
+
+            @Override
+            public View getDropDownView(int position, View convertView,
+                                        ViewGroup parent) {
+                View view = super.getDropDownView(position, convertView, parent);
+                TextView tv = (TextView) view;
+                if (position == 0) {
+                    tv.setTextColor(Color.GRAY);
+                } else {
+                    tv.setTextColor(Color.BLACK);
+                }
+                return view;
+            }
+        });
 
         mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0){
+                    ((TextView) parent.getChildAt(0)).setTextColor(Color.GRAY);
+                }
                 filter(nameFilter.getText().toString(), cityFilter.getText().toString(), mySpinner.getSelectedItem().toString());
             }
 
@@ -168,7 +190,7 @@ public class ListActivity extends AppCompatActivity {
                     if ((isNameSurnameMatches) || (isSurnameNameMatches)) {
                         if ((Objects.requireNonNull(category).toLowerCase()
                                 .compareTo(Objects.requireNonNull(medic.getCategory()).toLowerCase()) == 0)
-                        || (category.compareTo("") == 0)){
+                                || (category.compareTo("Выберите категорию") == 0)) {
                             filteredList.add(medic);
                             mAdapter.filterList(filteredList);
                         }
