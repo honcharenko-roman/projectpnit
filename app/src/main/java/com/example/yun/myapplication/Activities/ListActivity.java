@@ -4,20 +4,18 @@ import android.app.Activity;
 import android.content.Intent;
 
 import android.graphics.Color;
-import android.os.Build;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,11 +24,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import com.example.yun.myapplication.Entities.Medic;
 import com.example.yun.myapplication.LocalDb.LoggedUser;
@@ -42,6 +38,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.Timer;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -49,7 +46,39 @@ import retrofit2.Response;
 
 public class ListActivity extends AppCompatActivity {
 
-    private List<Medic> mMedicList;
+    private void loadDataBaseAsync() {
+        new loadDataBase().execute();
+    }
+
+    private class loadDataBase extends AsyncTask<String, Void, Void> {
+        protected Void doInBackground(String... urls) {
+            NetworkService.getInstance()
+                    .getJSONApi()
+                    .getAllPosts()
+                    .enqueue(new Callback<List<Medic>>() {
+                        @Override
+                        public void onResponse(@NonNull Call<List<Medic>> call, @NonNull Response<List<Medic>> response) {
+                            mMedicList = response.body();
+                            buildRecyclerView();
+                            if (mMedicList != null){
+                                spinner.setVisibility(View.GONE);
+                                filterLayout.setVisibility(View.VISIBLE);
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(@NonNull Call<List<Medic>> call, @NonNull Throwable t) {
+                            loadDataBaseAsync();
+                            t.printStackTrace();
+                        }
+                    });
+            return null;
+        }
+    }
+
+    private List<Medic> mMedicList = new ArrayList<>();
+
+    ConstraintLayout filterLayout;
 
     private RecyclerView mRecyclerView;
     private MedicAdapter mAdapter;
@@ -69,6 +98,9 @@ public class ListActivity extends AppCompatActivity {
 
     private boolean isFavorite;
 
+    private Timer mTimer;
+    private ProgressBar spinner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -78,6 +110,17 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_list);
+
+        EditText cityFilter = findViewById(R.id.listCityFilter);
+        EditText nameFilter = findViewById(R.id.listNameFilter);
+
+        filterLayout = findViewById(R.id.filterConstLayout);
+        filterLayout.setVisibility(View.GONE);
+
+        loadDataBaseAsync();
+        buildRecyclerView();
+
+        spinner = (ProgressBar) findViewById(R.id.progressBar1);
 
         mNavigationView = findViewById(R.id.navViewList);
         mHeaderView = mNavigationView.getHeaderView(0);
@@ -104,28 +147,8 @@ public class ListActivity extends AppCompatActivity {
 
         setUpNavigationView();
 
-        mMedicList = null;
-
-        NetworkService.getInstance()
-                .getJSONApi()
-                .getAllPosts()
-                .enqueue(new Callback<List<Medic>>() {
-                    @Override
-                    public void onResponse(@NonNull Call<List<Medic>> call, @NonNull Response<List<Medic>> response) {
-                        mMedicList = response.body();
-                        buildRecyclerView();
-                    }
-
-                    @Override
-                    public void onFailure(@NonNull Call<List<Medic>> call, @NonNull Throwable t) {
-                        t.printStackTrace();
-                    }
-                });
-
-        EditText cityFilter = findViewById(R.id.listCityFilter);
-        EditText nameFilter = findViewById(R.id.listNameFilter);
-        Spinner mySpinner = (Spinner) findViewById(R.id.spinner2);
-        mySpinner.setAdapter(new ArrayAdapter<List<String>>(this, android.R.layout.simple_spinner_item, categoryValues) {
+        Spinner searchSpinner = (Spinner) findViewById(R.id.spinner2);
+        searchSpinner.setAdapter(new ArrayAdapter<List<String>>(this, android.R.layout.simple_spinner_item, categoryValues) {
 
             @Override
             public View getDropDownView(int position, View convertView,
@@ -141,13 +164,13 @@ public class ListActivity extends AppCompatActivity {
             }
         });
 
-        mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        searchSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0) {
                     ((TextView) parent.getChildAt(0)).setTextColor(Color.GRAY);
                 }
-                filter(nameFilter.getText().toString(), cityFilter.getText().toString(), mySpinner.getSelectedItem().toString());
+                filter(nameFilter.getText().toString(), cityFilter.getText().toString(), searchSpinner.getSelectedItem().toString());
             }
 
             @Override
@@ -155,7 +178,6 @@ public class ListActivity extends AppCompatActivity {
 
             }
         });
-
         cityFilter.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -168,7 +190,7 @@ public class ListActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                filter(nameFilter.getText().toString(), s.toString(), mySpinner.getSelectedItem().toString());
+                filter(nameFilter.getText().toString(), s.toString(), searchSpinner.getSelectedItem().toString());
             }
         });
         nameFilter.addTextChangedListener(new TextWatcher() {
@@ -183,7 +205,7 @@ public class ListActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                filter(s.toString(), cityFilter.getText().toString(), mySpinner.getSelectedItem().toString());
+                filter(s.toString(), cityFilter.getText().toString(), searchSpinner.getSelectedItem().toString());
             }
         });
 
@@ -336,8 +358,8 @@ public class ListActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
+    private void attachLayoutElements(){
+
     }
+
 }
