@@ -67,11 +67,9 @@ public class ListActivity extends AppCompatActivity {
     //!*($E^*)$
     private List categoryValues = new ArrayList<String>();
 
-    private boolean isFavorite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         categoryValues.add("Выберите категорию");
         categoryValues.addAll(Arrays.asList(YELL.main.domain.Categories.values()));
 
@@ -96,6 +94,8 @@ public class ListActivity extends AppCompatActivity {
         } else {
             mNavigationView.getMenu().getItem(6).setVisible(true);
             mNavigationView.getMenu().getItem(7).setVisible(false);
+            mNameText.setText("");
+            mEmailText.setText("Please sign in");
         }
 
         mToggle.setOnClickListener(v -> {
