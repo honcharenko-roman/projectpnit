@@ -21,6 +21,7 @@ public class MedicAdapter extends RecyclerView.Adapter<MedicAdapter.MedicViewHol
 
     public interface OnItemClickListener {
         void onItemClick(int position);
+
         void onFavoriteClick(int position);
     }
 
@@ -64,10 +65,9 @@ public class MedicAdapter extends RecyclerView.Adapter<MedicAdapter.MedicViewHol
                         if (position != RecyclerView.NO_POSITION) {
                             listener.onFavoriteClick(position);
                             if (mImageFavorite.getDrawable().getConstantState() ==
-                                    itemView.getResources().getDrawable( R.drawable.ic_favorite_filled).getConstantState()){
+                                    itemView.getResources().getDrawable(R.drawable.ic_favorite_filled).getConstantState()) {
                                 mImageFavorite.setImageResource(R.drawable.ic_favorite_blank);
-                            }
-                            else {
+                            } else {
                                 mImageFavorite.setImageResource(R.drawable.ic_favorite_filled);
                             }
 
@@ -93,15 +93,14 @@ public class MedicAdapter extends RecyclerView.Adapter<MedicAdapter.MedicViewHol
     public void onBindViewHolder(MedicViewHolder holder, int position) {
         Medic currentItem = mMedicList.get(position);
 
-        if (currentItem.isFavorite()){
+        if (currentItem.isFavorite()) {
             holder.mImageFavorite.setImageResource(R.drawable.ic_favorite_filled);
-        }
-        else
+        } else
             holder.mImageFavorite.setImageResource(R.drawable.ic_favorite_blank);
 
         //аватар
         //holder.mImageView.setImageResource(currentItem.getImageResource());
-        String nameSurname = currentItem.getName()+" "+currentItem.getSurname();
+        String nameSurname = currentItem.getName() + " " + currentItem.getSurname();
         holder.mTextView1.setText(nameSurname);
         holder.mTextView2.setText(currentItem.getCategory());
         holder.mTextView3.setText(currentItem.getAdress());
@@ -112,7 +111,7 @@ public class MedicAdapter extends RecyclerView.Adapter<MedicAdapter.MedicViewHol
         return mMedicList.size();
     }
 
-    public void filterList(ArrayList<Medic> filteredList){
+    public void filterList(ArrayList<Medic> filteredList) {
         mMedicList = filteredList;
         notifyDataSetChanged();
     }
