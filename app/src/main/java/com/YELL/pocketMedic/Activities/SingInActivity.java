@@ -1,6 +1,7 @@
 package com.YELL.pocketMedic.Activities;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -20,7 +21,7 @@ public class SingInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
-
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Typeface font = Typeface.createFromAsset(getAssets(), "Montserrat-Black.ttf");
 
         font = Typeface.createFromAsset(getAssets(), "Montserrat-Italic.ttf");

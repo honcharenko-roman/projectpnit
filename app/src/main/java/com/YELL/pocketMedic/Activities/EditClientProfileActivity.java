@@ -1,6 +1,7 @@
 package com.YELL.pocketMedic.Activities;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -48,6 +49,7 @@ public class EditClientProfileActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile_client);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         nameField = findViewById(R.id.editClientProfileNameField);
         surnameField = findViewById(R.id.editClientProfileSurnameField);

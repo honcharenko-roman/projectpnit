@@ -1,6 +1,7 @@
 package com.YELL.pocketMedic.Activities;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
@@ -35,9 +36,9 @@ public class error404Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_currently_testing);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         mNavigationView = findViewById(R.id.navViewList2);
         mHeaderView = mNavigationView.getHeaderView(0);

@@ -1,6 +1,7 @@
 package com.YELL.pocketMedic.Activities;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -62,6 +63,7 @@ public class EditProfileActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         categoryValues.add("Выберите категорию");
         categoryValues.addAll(Arrays.asList(com.YELL.pocketMedic.Entities.Categories.values()));
