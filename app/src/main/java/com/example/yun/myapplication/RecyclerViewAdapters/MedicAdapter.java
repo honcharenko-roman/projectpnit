@@ -25,6 +25,14 @@ public class MedicAdapter extends RecyclerView.Adapter<MedicAdapter.MedicViewHol
         void onFavoriteClick(int position);
     }
 
+    public List<Medic> getmMedicList() {
+        return mMedicList;
+    }
+
+    public void setmMedicList(List<Medic> mMedicList) {
+        this.mMedicList = mMedicList;
+    }
+
     public void setOnItemClickListener(OnItemClickListener listener) {
         mListener = listener;
     }

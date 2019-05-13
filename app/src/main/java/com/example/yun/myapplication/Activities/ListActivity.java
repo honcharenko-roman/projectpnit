@@ -242,10 +242,9 @@ public class ListActivity extends AppCompatActivity {
     }
 
     public void removeItem(int position) {
-        mMedicList.remove(position);
+        mAdapter.getmMedicList().remove(position);
         mAdapter.notifyItemRemoved(position);
     }
-
 
     public void buildRecyclerView() {
         mRecyclerView = findViewById(R.id.recyclerView);
@@ -260,18 +259,19 @@ public class ListActivity extends AppCompatActivity {
             public void onItemClick(int position) {
                 Intent intent = new Intent(ListActivity.this, MedProfileActivity.class);
                 Bundle extras = new Bundle();
-                extras.putLong("id", mMedicList.get(position).getId());
+                extras.putLong("id", mAdapter.getmMedicList().get(position).getId());
                 extras.putInt("position", position);
-                extras.putBoolean("isFavorite", mMedicList.get(position).isFavorite());
+                extras.putBoolean("isFavorite", mAdapter.getmMedicList().get(position).isFavorite());
+                System.out.println("position-"+ position + "; id -"+mAdapter.getmMedicList().get(position).getId());
                 intent.putExtras(extras);
                 startActivityForResult(intent, 1);
             }
 
             public void onFavoriteClick(int position) {
-                if (mMedicList.get(position).isFavorite()) {
-                    mMedicList.get(position).setFavorite(false);
+                if (mAdapter.getmMedicList().get(position).isFavorite()) {
+                    mAdapter.getmMedicList().get(position).setFavorite(false);
                 } else {
-                    mMedicList.get(position).setFavorite(true);
+                    mAdapter.getmMedicList().get(position).setFavorite(true);
                 }
             }
         });
@@ -284,7 +284,8 @@ public class ListActivity extends AppCompatActivity {
             if (resultCode == Activity.RESULT_OK) {
                 int result = data.getIntExtra("position", 0);
                 boolean result2 = data.getBooleanExtra("isFavorite", false);
-                mMedicList.get(result).setFavorite(result2);
+                mAdapter.getmMedicList().get(result).setFavorite(result2);
+                mAdapter.notifyDataSetChanged();
             }
             if (resultCode == Activity.RESULT_CANCELED) {
                 //Write your code if there's no result
